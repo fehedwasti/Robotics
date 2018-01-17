@@ -8,7 +8,7 @@
 #define yLength 100
 #define gapLength 30
 #define delay 1
-#define delay2 10
+#define delay2 1  
 
 double sine(double value){
   value = value * M_PI/180;
@@ -156,11 +156,11 @@ void I(){
   drive_goto(-26,25);  //turn anti-clockwise(90 degree)
   pause(delay);
   simulator_startNewSmokeTrail();
-  drive_goto(yLength,yLength);  //up, letter finished  [wheels at the back]
-  simulator_stopSmokeTrail();
+  drive_goto(yLength,yLength);  //up, letter finished  [wheels at the back]  
   pause(delay2);
+  simulator_stopSmokeTrail();
 
-  //chang to the initial state and go to the next starting point
+  //change to the initial state and go to the next starting point
   drive_goto(-yLength,-yLength);  //backwards
   pause(delay);
   drive_goto(26,-25);  //turn anti-clockwise(90)
@@ -187,50 +187,53 @@ void K(){
     drive_goto(-26,25); //turn anti-clockwise(90 degree)
     pause(delay);
     drive_goto(yLength*sqrt(2)/2,yLength*sqrt(2)/2);  //draw the \, letter finished  [wheels at the back]
+    simulator_stopSmokeTrail();
     pause(delay2);
 
-    //make the robot back to its initial state
+    //go to the next starting point
     drive_goto(-13,13);  //turn anti-clockwise(45 degree)
     pause(delay);
-    //drive_goto(xLength-yLength/2,xLength-yLength/2);  //finished
+    drive_goto((xLength-yLength/2)+gapLength,(xLength-yLength/2)+gapLength);
     pause(delay);
   }
   else{
-    drive_goto(-sqrt(2)*xLength,-xLength*sqrt(2)); //go to the upper right corner  [wheels at the back]
+    drive_goto(-sqrt(2)*xLength,-xLength*sqrt(2)); //draw the /  [wheels at the back]
     pause(delay);
     drive_goto(xLength*sqrt(2),xLength*sqrt(2));  //backwards  [wheels at the front]
     pause(delay);
     drive_goto(26,-25); //turn clockwise(90 degree)
     pause(delay);
-    drive_goto(-xLength*sqrt(2),-xLength*sqrt(2));  //go to the bottom right corner  [wheels at the back]
+    drive_goto(-xLength*sqrt(2),-xLength*sqrt(2));  //draw the \  [wheels at the back]
+    simulator_stopSmokeTrail();
     pause(delay2);
 
-    //make the robot back to its initial state
+    //go to the next starting point
     drive_goto(13,-13);  //turn clockwise(45 degree)
     pause(delay);
     drive_goto(-(yLength/2-xLength),-(yLength/2-xLength));  //go to the bottom of the letter  [wheels at the back]
     pause(delay);
     drive_goto(26,-25); //turn clockwise(90 degree)
     pause(delay);
+    drive_goto(gapLength,gapLength);
+    pause(delay);
   }
-  simulator_stopSmokeTrail();
-  drive_goto(30,30);
+  
 }
 
 void L(){
   drive_goto(26,-25);  //clockwise(90)
+    pause(delay);    
+    drive_goto(-yLength,-yLength);  //up  [wheels at the back]
     pause(delay2);
     simulator_startNewSmokeTrail();
-    drive_goto(-yLength,-yLength);  //up  [wheels at the back]
-    pause(delay);
     drive_goto(yLength,yLength);  //backward
     pause(delay);
     drive_goto(-26,25);  //clockwise(90)
     pause(delay);
     drive_goto(xLength,xLength); //letter finished
-    pause(delay2);
     simulator_stopSmokeTrail();
-
+    pause(delay2);
+    
     drive_goto(gapLength,gapLength); //go to the next starting point
 }
 
@@ -240,7 +243,7 @@ int main(void){
 
   char input[100];
   printf("Enter text: \n");
-  scanf("%s", &input);
+  scanf("%s", input);
 
   for (int i = 0; i < strlen(input); i++){
     char letter = input[i];
