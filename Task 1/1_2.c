@@ -4,11 +4,10 @@
 #include <stdio.h>
 
 //Lengths must be multiples of 10
-#define xLength 60
-#define yLength 100
+#define xLength 30
+#define yLength 50
 #define gapLength 30
 #define delay 1
-#define delay2 1  
 
 double sine(double value){
   value = value * M_PI/180;
@@ -26,175 +25,186 @@ void A(){
   int base = floor(2*diagonal*cosine(70));
 
   drive_goto(-20,20);
-  pause(1);
+  pause(delay);
   // / part of A
   simulator_startNewSmokeTrail();
   drive_goto(diagonal,diagonal);
-  pause(1);
+  pause(delay);
   drive_goto(40,-40);
-  pause(1);
+  pause(delay);
   // \ part of A
   drive_goto(diagonal+15,diagonal+15);
-  pause(1);
+  pause(delay);
   drive_goto(-0.6*diagonal,-0.6*diagonal);
-  pause(1);
+  pause(delay);
   drive_goto(-20,20);
-  pause(1);
+  pause(delay);
   // - part of A
   drive_goto(-0.5*base,-0.5*base);
-  pause(1);
+  pause(delay);
+  //Move robot to next position
   drive_goto(0.5*base,0.5*base);
-  pause(1);
+  pause(delay);
   drive_goto(20,-20);
-  pause(1);
+  pause(delay);
   drive_goto(0.6*diagonal-15,0.6*diagonal-15);
   simulator_stopSmokeTrail();
-  pause(1);
+  pause(delay);
   drive_goto(-20,20);
-  pause(1);
-  drive_goto(30,30);
+  pause(delay);
+  drive_goto(gapLength,gapLength);
   //Letter Complete
-  pause(10);
+  pause(delay);
 }
 
 void E(){
   drive_goto(-26,25);
-  pause(1);
+  pause(delay);
+  //Draw | part of E
   simulator_startNewSmokeTrail();
   drive_goto(yLength, yLength);
-  pause(1);
+  pause(delay);
   drive_goto(26,-25);
-  pause(1);
+  pause(delay);
+  //Draw top and middle - for E
   for (int i = 0; i < 2; i++){
     simulator_startNewSmokeTrail();
     drive_goto(xLength, xLength);
-    pause(1);
+    pause(delay);
     drive_goto(-xLength, -xLength);
     simulator_stopSmokeTrail();
-    pause(1);
+    pause(delay);
     drive_goto(26,-25);
     drive_goto(yLength/2, yLength/2);
-    pause(1);
+    pause(delay);
     drive_goto(-26, 25);
-    pause(1);
+    pause(delay);
   }
+  //Draw _ of E
   simulator_startNewSmokeTrail();
   drive_goto(xLength, xLength);
   simulator_stopSmokeTrail();
-  drive_goto(30,30);
+  drive_goto(gapLength,gapLength);
   //Letter Complete
-  pause(10);
+  pause(delay);
 }
 
 void F(){
   drive_goto(-26,25);
-  pause(1);
+  pause(delay);
+  //Draw | part of F
   simulator_startNewSmokeTrail();
   drive_goto(yLength, yLength);
-  pause(1);
+  pause(delay);
   drive_goto(26,-25);
-  pause(1);
+  pause(delay);
+  // Draw the - Parts of F
   for (int i = 0; i < 2; i++){
     simulator_startNewSmokeTrail();
     drive_goto(xLength, xLength);
     simulator_stopSmokeTrail();
-    pause(1);
+    pause(delay);
     if (i == 0){
       simulator_startNewSmokeTrail();
       drive_goto(-xLength, -xLength);
-      pause(1);
+      pause(delay);
       simulator_stopSmokeTrail();
       drive_goto(26,-25);
       drive_goto(yLength/2, yLength/2);
-      pause(1);
+      pause(delay);
       drive_goto(-26, 25);
-      pause(1);
+      pause(delay);
     }
   }
   //Letter Complete
   pause(1000);
   //Reposition for next letter
   drive_goto(26,-25);
-  pause(1);
+  pause(delay);
   drive_goto(yLength/2, yLength/2);
-  pause(1);
+  pause(delay);
   drive_goto(-26,25);
-  pause(1);
-  drive_goto(30,30);
-  pause(1);
+  pause(delay);
+  drive_goto(gapLength,gapLength);
+  pause(delay);
 }
 
 void H(){
   drive_goto(-26,25);
-  pause(1);
+  pause(delay);
+  //Draw left | of H
   simulator_startNewSmokeTrail();
   drive_goto(yLength+10,yLength+10);
-  pause(1);
+  pause(delay);
   drive_goto(-yLength/2-0.1*yLength, -yLength/2-0.1*yLength);
-  pause(1);
+  pause(delay);
+  //Draw - part of H
   drive_goto(26,-25);
-  pause(1);
+  pause(delay);
   drive_goto(xLength,xLength);
-  pause(1);
+  pause(delay);
   drive_goto(-26,25);
-  pause(1);
+  pause(delay);
+  //Draw right | part of H
   drive_goto(yLength/2+0.1*yLength, yLength/2+0.1*yLength);
-  pause(1);
+  pause(delay);
   drive_goto(-yLength-10,-yLength-10);
-  pause(1);
+  pause(delay);
   simulator_stopSmokeTrail();
+  //Move to next position
   drive_goto(26,-25);
-  pause(1);
-  drive_goto(30,30);
+  pause(delay);
+  drive_goto(gapLength,gapLength);
   //Letter Complete
-  pause(10);
+  pause(delay);
 }
 
 void I(){
-  drive_goto(xLength/4,xLength/4);  //go to the middle position  [wheels at the front]
-  pause(delay2);
+  pause(delay);
   drive_goto(-26,25);  //turn anti-clockwise(90 degree)
   pause(delay);
   simulator_startNewSmokeTrail();
-  drive_goto(yLength,yLength);  //up, letter finished  [wheels at the back]  
-  pause(delay2);
+  drive_goto(yLength,yLength);  //up, letter finished  [wheels at the back]
   simulator_stopSmokeTrail();
+  pause(delay);
 
   //change to the initial state and go to the next starting point
   drive_goto(-yLength,-yLength);  //backwards
   pause(delay);
   drive_goto(26,-25);  //turn anti-clockwise(90)
   pause(delay);
-  drive_goto(xLength/2+gapLength,xLength/2+gapLength);
+  drive_goto(gapLength,gapLength);
 }
 
 void K(){
-  drive_goto(26,-25);   //turn clockwise(90 degree)
-  pause(delay2);
-  simulator_startNewSmokeTrail();
-  drive_goto(-yLength,-yLength);  //up   [wheels at the back]
+  drive_goto(-26,25);   //turn clockwise(90 degree)
   pause(delay);
-  drive_goto(yLength/2,yLength/2); //backwards  [wheels at the front]
+  simulator_startNewSmokeTrail();
+  drive_goto(yLength,yLength);  //up   [wheels at the back]
+  pause(delay);
+  drive_goto(-yLength/2,-yLength/2); //backwards  [wheels at the front]
   pause(delay);
   drive_goto(13,-13);  //turn clockwise(45 degree)
   pause(delay);
 
   if(xLength>=yLength/2){
-    drive_goto(-yLength*sqrt(2)/2,-yLength*sqrt(2)/2); //draw the /  [wheels at the back]
+    drive_goto(yLength*sqrt(2)/2,yLength*sqrt(2)/2); //draw the /  [wheels at the back]
     pause(delay);
-    drive_goto(yLength*sqrt(2)/2,yLength*sqrt(2)/2);  //backwards  [wheels at the front]
+    drive_goto(-yLength*sqrt(2)/2,-yLength*sqrt(2)/2);  //backwards  [wheels at the front]
     pause(delay);
-    drive_goto(-26,25); //turn anti-clockwise(90 degree)
+    drive_goto(26,-25); //turn clockwise(90 degree)
     pause(delay);
-    drive_goto(yLength*sqrt(2)/2,yLength*sqrt(2)/2);  //draw the \, letter finished  [wheels at the back]
+    drive_goto(yLength*sqrt(2)/2+15,yLength*sqrt(2)/2+ 15);  //draw the \, letter finished  [wheels at the back]
+    pause(delay);
+    drive_goto(-15,-15);
+    pause(delay);
+    //make the robot back to its initial state
     simulator_stopSmokeTrail();
-    pause(delay2);
-
-    //go to the next starting point
     drive_goto(-13,13);  //turn anti-clockwise(45 degree)
     pause(delay);
-    drive_goto((xLength-yLength/2)+gapLength,(xLength-yLength/2)+gapLength);
+    drive_goto(gapLength,gapLength);
     pause(delay);
+
   }
   else{
     drive_goto(-sqrt(2)*xLength,-xLength*sqrt(2)); //draw the /  [wheels at the back]
@@ -205,7 +215,7 @@ void K(){
     pause(delay);
     drive_goto(-xLength*sqrt(2),-xLength*sqrt(2));  //draw the \  [wheels at the back]
     simulator_stopSmokeTrail();
-    pause(delay2);
+    pause(delay);
 
     //go to the next starting point
     drive_goto(13,-13);  //turn clockwise(45 degree)
@@ -217,23 +227,23 @@ void K(){
     drive_goto(gapLength,gapLength);
     pause(delay);
   }
-  
+
 }
 
 void L(){
-  drive_goto(26,-25);  //clockwise(90)
-    pause(delay);    
-    drive_goto(-yLength,-yLength);  //up  [wheels at the back]
-    pause(delay2);
-    simulator_startNewSmokeTrail();
-    drive_goto(yLength,yLength);  //backward
+  drive_goto(-26,25);  //clockwise(90)
     pause(delay);
-    drive_goto(-26,25);  //clockwise(90)
+    simulator_startNewSmokeTrail();
+    drive_goto(yLength,yLength);  //up  [wheels at the back]
+    pause(delay);
+    drive_goto(-yLength,-yLength);  //backward
+    pause(delay);
+    drive_goto(26,-25);  //clockwise(90)
     pause(delay);
     drive_goto(xLength,xLength); //letter finished
+    pause(delay);
     simulator_stopSmokeTrail();
-    pause(delay2);
-    
+
     drive_goto(gapLength,gapLength); //go to the next starting point
 }
 
