@@ -4,8 +4,8 @@
 #include <stdio.h>
 
 //Lengths must be multiples of 10
-#define xLength 20
-#define yLength 50
+#define xLength 60
+#define yLength 100
 #define gapLength 30
 #define delay 1
 
@@ -30,27 +30,29 @@ void A(){
   simulator_startNewSmokeTrail();
   drive_goto(diagonal,diagonal);
   pause(delay);
-  drive_goto(40,-40);
+  drive_goto(-12,12);
   pause(delay);
   // \ part of A
-  drive_goto(diagonal+15,diagonal+15);
+  drive_goto(-diagonal,-diagonal);
   pause(delay);
-  drive_goto(-0.6*diagonal,-0.6*diagonal);
+  drive_goto(0.4*diagonal,0.4*diagonal);
   pause(delay);
+  simulator_stopSmokeTrail();
   drive_goto(-20,20);
   pause(delay);
   // - part of A
-  drive_goto(-0.5*base,-0.5*base);
+  simulator_startNewSmokeTrail();
+  drive_goto(0.8*base,0.8*base);
   pause(delay);
   //Move robot to next position
-  drive_goto(0.5*base,0.5*base);
+  drive_goto(-0.8*base,-0.8*base);
   pause(delay);
+  simulator_stopSmokeTrail();
   drive_goto(20,-20);
   pause(delay);
-  drive_goto(0.6*diagonal-15,0.6*diagonal-15);
-  simulator_stopSmokeTrail();
+  drive_goto(-0.4*diagonal,-0.4*diagonal);
   pause(delay);
-  drive_goto(-20,20);
+  drive_goto(32,-32);
   pause(delay);
   drive_goto(gapLength,gapLength);
   //Letter Complete
@@ -213,7 +215,9 @@ void K(){
     pause(delay);
     drive_goto(26,-25); //turn clockwise(90 degree)
     pause(delay);
-    drive_goto(xLength*sqrt(2),xLength*sqrt(2));  //draw the \  [wheels at the back]
+    drive_goto(xLength*sqrt(2)+20,xLength*sqrt(2)+20);  //draw the \  [wheels at the back]
+    pause(delay);
+    drive_goto(-20,-20);
     simulator_stopSmokeTrail();
     pause(delay);
 
@@ -270,6 +274,5 @@ int main(void){
     }
 
   }
-  //A();
   return 0;
 }
