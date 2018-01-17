@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 //Lengths must be multiples of 10
-#define xLength 30
+#define xLength 20
 #define yLength 50
 #define gapLength 30
 #define delay 1
@@ -207,22 +207,20 @@ void K(){
 
   }
   else{
-    drive_goto(-sqrt(2)*xLength,-xLength*sqrt(2)); //draw the /  [wheels at the back]
+    drive_goto(sqrt(2)*xLength,xLength*sqrt(2)); //draw the /  [wheels at the back]
     pause(delay);
-    drive_goto(xLength*sqrt(2),xLength*sqrt(2));  //backwards  [wheels at the front]
+    drive_goto(-xLength*sqrt(2),-xLength*sqrt(2));  //backwards  [wheels at the front]
     pause(delay);
     drive_goto(26,-25); //turn clockwise(90 degree)
     pause(delay);
-    drive_goto(-xLength*sqrt(2),-xLength*sqrt(2));  //draw the \  [wheels at the back]
+    drive_goto(xLength*sqrt(2),xLength*sqrt(2));  //draw the \  [wheels at the back]
     simulator_stopSmokeTrail();
     pause(delay);
 
     //go to the next starting point
-    drive_goto(13,-13);  //turn clockwise(45 degree)
+    drive_goto(-13,13);  //turn anti-clockwise(45 degree)
     pause(delay);
-    drive_goto(-(yLength/2-xLength),-(yLength/2-xLength));  //go to the bottom of the letter  [wheels at the back]
-    pause(delay);
-    drive_goto(26,-25); //turn clockwise(90 degree)
+    drive_goto((yLength/2-xLength),(yLength/2-xLength));  //go to the bottom of the letter  [wheels at the back]
     pause(delay);
     drive_goto(gapLength,gapLength);
     pause(delay);
