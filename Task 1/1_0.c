@@ -1,8 +1,8 @@
-#include "simpletools.h"                        // Library includes
+#include "simpletools.h"
 #include "abdrive.h"
+#include "simulator.h"
 
-int main()                                      // main function
-{
+int main(void) {
   drive_goto(150,150);
   pause(10);
   drive_goto(26,-25);
@@ -27,4 +27,6 @@ int main()                                      // main function
   drive_goto(308,308);
 
   simulator_stopSmokeTrail();
+
+  return 0;
 }

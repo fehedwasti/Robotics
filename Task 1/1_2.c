@@ -2,6 +2,7 @@
 #include "abdrive.h"
 #include <math.h>
 #include <stdio.h>
+#include "simulator.h"
 
 //Lengths must be multiples of 10
 #define xLength 60
@@ -251,7 +252,7 @@ void L(){
 
 int main(void){
   //Move robot to left side of canvas
-  drive_goto(-200,-200);
+  drive_goto(-215,-215);
 
   char input[100];
   printf("Enter text: \n");
