@@ -3,13 +3,13 @@
 int main()
 {
     //input number of elements
-    int n=0;    
+    int n=0;
     printf("Please enter number of elements:");
     scanf("%d",&n);
 
     //input the elements
     int numList[n];
-    printf("\nEnter %d integers:",n);    
+    printf("\nEnter %d integers:",n);
     for(int i=0;i<n;i++)
     scanf("%d",&numList[i]);
 
@@ -21,15 +21,16 @@ int main()
         for(int j=0;j<n-1-i;j++)
         {
             if(numList[j]>numList[j+1])
-			{
-				t=numList[j];
-				numList[j]=numList[j+1];
-				numList[j+1]=t;
-			}
+      			{
+      				t=numList[j];
+      				numList[j]=numList[j+1];
+      				numList[j+1]=t;
+      			}
 
             //displaying the process
             for(int i=0;i<n;i++)
             printf("%d\t",numList[i]);
+            
             printf("\n");
         }
     }
