@@ -23,10 +23,10 @@ void detectWall(){
     int dist=ping_cm(8);
     printf("distance=%d\n",dist);
 
-    if(dist<30){
+    if(dist<26){
         if(counter==0){
-            turn(15,-1);
-            angles[inDex]=15;
+            turn(52,-1);  //52.8; drive_goto(15,-15)
+            angles[inDex]=52;
             inDex++;
             counter++;
         }
@@ -38,7 +38,7 @@ void detectWall(){
             for(int i=0;i<inDex;i++){
                 sum+=angles[i];
             }
-            printf("final direction:%5.2f\n",sum/0.284);
+            printf("final direction:%d\n",sum);
             printf("adjusting...");
             turn(sum,1);
             return;
@@ -63,12 +63,12 @@ void moveAlongwall(){
         printf("%cirRight=%d\tirLeft=%d\n",HOME,irRight,irLeft);
 
         if(((irRight==0)&&(irLeft==0))||((irRight==1)&&(irLeft==1))){
-            turn(8,1);
-            angles[inDex]=-8;
+            turn(31,1);  //31.6; drive_goto(-9,9)
+            angles[inDex]=-31;
             inDex++;
         }
         else{
-            drive_goto(23,23);
+            drive_goto(20,20);
         }
 
         detectWall();
