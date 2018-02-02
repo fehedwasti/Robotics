@@ -3,6 +3,7 @@
 
 applications/Task3/CMakeFiles/3_1.dir/3_1.c.o
  /Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/Task3/3_1.c
+ /Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/Task3/functions.c
  include/abdrive.h
  include/cog.h
  include/driver.h
@@ -13,5 +14,6 @@ applications/Task3/CMakeFiles/3_1.dir/3_1.c.o
  include/simplei2c.h
  include/simpletext.h
  include/simpletools.h
+ include/simulator.h
  include/sys/driver.h
  include/sys/sd.h

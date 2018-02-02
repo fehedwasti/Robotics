@@ -15,6 +15,16 @@ simpletools.h
 /Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/Task3/simpletools.h
 abdrive.h
 /Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/Task3/abdrive.h
+functions.c
+/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/Task3/functions.c
+
+/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/Task3/functions.c
+simpletools.h
+/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/Task3/simpletools.h
+abdrive.h
+/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/Task3/abdrive.h
+simulator.h
+/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/Task3/simulator.h
 
 include/abdrive.h
 simpletools.h
@@ -95,6 +105,8 @@ math.h
 -
 simplei2c.h
 include/simplei2c.h
+
+include/simulator.h
 
 include/sys/driver.h
 
