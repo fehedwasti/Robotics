@@ -1,4 +1,0 @@
-DECLARE_APP(spinLeftRight spinLeftRight.c)
-DECLARE_APP(1_0 1_0.c)
-DECLARE_APP(1_1 1_1.c)
-DECLARE_APP(1_2 1_2.c)

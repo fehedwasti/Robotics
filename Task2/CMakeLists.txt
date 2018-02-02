@@ -1,0 +1,2 @@
+DECLARE_APP(2_1 2_1.c)
+DECLARE_APP(2_2 2_2.c)
