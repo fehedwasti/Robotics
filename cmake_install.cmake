@@ -32,6 +32,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/Task1/cmake_install.cmake")
   include("/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/Task2/cmake_install.cmake")
   include("/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/Task3/cmake_install.cmake")
+  include("/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/MidTerm/cmake_install.cmake")
 
 endif()
 
