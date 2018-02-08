@@ -8,12 +8,15 @@
 #include "ping.h"
 
 
-clock_t t;
-
 void backtrack(int order[], int itr){
-  //Turn 180 degrees
+
+  printf("\nPress enter to continue");
+  char enter = 0;
+  while (enter != '\r' && enter != '\n') { enter = getchar(); }
   int i,j,temp,temp2;
-  drive_goto(-15,-15);
+
+  //Turn 180 degrees
+  //drive_goto(-15,-15);
   pause(1);
   drive_goto(52,-50);
   pause(2000);
@@ -29,21 +32,16 @@ void backtrack(int order[], int itr){
     j--;
   }
   for (int i = 0; i <= itr; i++){
-    printf("\n%i", order[i]);
-  }
-  for (int i = 0; i <= itr; i++){
     if (order[i] == 1){
       drive_speed(15,20);
-      pause(100);
     }
     else if (order[i]== -1){
       drive_speed(20,15);
-      pause(100);
     }
     else{
       drive_speed(20,20);
-      pause(100);
     }
+    pause(150);
   }
   simulator_stopSmokeTrail();
 }
@@ -54,16 +52,14 @@ int main(int argc, const char* argv[]){
   clock_t start, finish;
   double t_time;
 
-  t = clock();
   // Drive ahead nice and slow
   int function_order[300];
   int iterator = 0;
 
-  start = clock();
   drive_speed(64, 64);
 
 simulator_startNewSmokeTrail();
-  while(ping_cm(8) > 8)
+  while(ping_cm(8) > 10)
     {
       long int lastCNT = CNT;
 
@@ -88,8 +84,6 @@ simulator_startNewSmokeTrail();
           irRight += input(2);
         }
 
-
-
       if (irLeft < irRight)
         {
           drive_speed(20, 15);
@@ -112,19 +106,15 @@ simulator_startNewSmokeTrail();
 
       printf("%d %d\n", irLeft, irRight);
       pause(100);
+
     }
 
   // Stop
   drive_speed(0, 0);
-  for (int i = 0; i <= iterator; i++){
-    printf("%i", function_order[i]);
-  }
+  int wallDistance = ping_cm(8);
+  printf("Distance to Wall: %i", wallDistance);
   simulator_stopSmokeTrail();
   backtrack(function_order, iterator);
-  finish = clock();
 
-  t = clock() - t;
-  t_time = ((double)(finish - start))/CLOCKS_PER_SEC;
-  printf("\n time taken: %f", t_time);
   return 0;
 }
