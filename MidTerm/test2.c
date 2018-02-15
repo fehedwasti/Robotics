@@ -7,6 +7,16 @@
 #include "simpletools.h"
 #include "ping.h"
 
+int a,b; // a > b
+
+
+void right(){
+  drive_speed(a,b);
+}
+void left(){
+  drive_speed(b,a);
+}
+
 
 void backtrack(int order[], int itr){
 
@@ -19,24 +29,25 @@ void backtrack(int order[], int itr){
   //drive_goto(-15,-15);
   pause(1);
   drive_goto(52,-50);
-  pause(2000);
+  pause(1);
+
   simulator_startNewSmokeTrail();
-  i = 0;
-  j = itr;
-  while(i<j){
-    temp = order[i];
-    temp2 = order[j];
-    order[i] = temp2;
-    order[j] = temp;
-    i++;
-    j--;
-  }
-  for (int i = 0; i <= itr; i++){
-    if (order[i] == 1){
-      drive_speed(15,20);
+  for (int i = itr; i > -1; i--){
+    b = 15;
+
+    if (order[i] == 2){
+      b = 12;
+      left();
+    }
+    else if (order[i] == -2){
+      b = 12;
+      right();
+    }
+    else if (order[i] == 1){
+      left();
     }
     else if (order[i]== -1){
-      drive_speed(20,15);
+      right();
     }
     else{
       drive_speed(20,20);
@@ -45,7 +56,6 @@ void backtrack(int order[], int itr){
   }
   simulator_stopSmokeTrail();
 }
-
 
 
 int main(int argc, const char* argv[]){
@@ -58,48 +68,57 @@ int main(int argc, const char* argv[]){
 
   drive_speed(64, 64);
 
-simulator_startNewSmokeTrail();
-  while(ping_cm(8) > 10)
-    {
+  simulator_startNewSmokeTrail();
+  while(ping_cm(8) > 10) {
+      a = 20; b = 15;
       long int lastCNT = CNT;
 
 
       // Read the left and right sensors
       int irLeft = 0;
-      for(int dacVal = 0; dacVal < 160; dacVal += 8)  // <- add
-        {                                               // <- add
-          dac_ctr(26, 0, dacVal);                       // <- add
-          freqout(11, 1, 38000);                        // <- add
+      for(int dacVal = 0; dacVal < 160; dacVal += 8){
+          dac_ctr(26, 0, dacVal);
+          freqout(11, 1, 38000);
           irLeft += input(10);
         }
 
-      print("%f\n", (1.0 * (CNT - lastCNT)) / ms);
-
-
       int irRight = 0;
-      for(int dacVal = 0; dacVal < 160; dacVal += 16)  // <- add
-        {                                               // <- add
-          dac_ctr(27, 1, dacVal);                       // <- add
-          freqout(1, 1, 38000);                        // <- add
+      for(int dacVal = 0; dacVal < 160; dacVal += 16){
+          dac_ctr(27, 1, dacVal);
+          freqout(1, 1, 38000);
           irRight += input(2);
         }
 
-      if (irLeft < irRight)
+      if (irLeft < 3){
+          b = 12;
+          right();
+          function_order[iterator] = 2;
+          iterator++;
+      }
+
+      else if (irRight < 3){
+          b = 12;
+          left();
+          function_order[iterator] = -2;
+          iterator++;
+      }
+
+      else if (irLeft < irRight)
         {
-          drive_speed(20, 15);
+          right();
           function_order[iterator] = 1;
           iterator++;
         }
       else if (irLeft > irRight)
         {
-          drive_speed(15,20);
+          left();
           function_order[iterator] = -1;
           iterator++;
         }
       else
         {
           drive_speed(20, 20);
-          function_order[iterator] = 25;
+          function_order[iterator] = 5;
           iterator++;
         }
 
