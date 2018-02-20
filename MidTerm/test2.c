@@ -6,48 +6,50 @@
 #include "simpletext.h"
 #include "simpletools.h"
 #include "ping.h"
+#include "simulator.h"
 
-int a,b; // a > b
+int a,b,c,d; // a > b
 
 
-void right(){
+void rightTurn(){
   drive_speed(a,b);
 }
-void left(){
+void leftTurn(){
   drive_speed(b,a);
 }
 
 
 void backtrack(int order[], int itr){
 
+
+
+  //Turn 180 degrees
+  drive_goto(-10,-10);
+  pause(1);
+  drive_goto(52,-50);
+  pause(1);
   printf("\nPress enter to continue");
   char enter = 0;
   while (enter != '\r' && enter != '\n') { enter = getchar(); }
   int i,j,temp,temp2;
 
-  //Turn 180 degrees
-  //drive_goto(-15,-15);
-  pause(1);
-  drive_goto(52,-50);
-  pause(1);
-
   simulator_startNewSmokeTrail();
   for (int i = itr; i > -1; i--){
-    b = 15;
+    b = d;
 
     if (order[i] == 2){
-      b = 12;
-      left();
+      b = c;
+      leftTurn();
     }
     else if (order[i] == -2){
-      b = 12;
-      right();
+      b = c;
+      rightTurn();
     }
     else if (order[i] == 1){
-      left();
+      leftTurn();
     }
     else if (order[i]== -1){
-      right();
+      rightTurn();
     }
     else{
       drive_speed(20,20);
@@ -59,6 +61,18 @@ void backtrack(int order[], int itr){
 
 
 int main(int argc, const char* argv[]){
+  //set variables for calculating moved distance
+  int lt=0,rt=0;
+  int *left=&lt;
+  int *right=&rt;
+  int pre_lt=0,pre_rt=0;
+  float dl=0,dr=0;    //distance moved by two wheels
+  float distance=0;   //distance moved by the robot
+  float angle=0;
+  float records[2]={0,0};
+
+  printf("distance = %f, angle = %f", records[0], records[1]);
+
   clock_t start, finish;
   double t_time;
 
@@ -69,8 +83,9 @@ int main(int argc, const char* argv[]){
   drive_speed(64, 64);
 
   simulator_startNewSmokeTrail();
+  a = 27; b = a * 0.75; c = 0.6 * b; d = b;
   while(ping_cm(8) > 10) {
-      a = 20; b = 15;
+      b = d;
       long int lastCNT = CNT;
 
 
@@ -90,34 +105,34 @@ int main(int argc, const char* argv[]){
         }
 
       if (irLeft < 3){
-          b = 12;
-          right();
+          b = c;
+          rightTurn();
           function_order[iterator] = 2;
           iterator++;
       }
 
       else if (irRight < 3){
-          b = 12;
-          left();
+          b = c;
+          leftTurn();
           function_order[iterator] = -2;
           iterator++;
       }
 
       else if (irLeft < irRight)
         {
-          right();
+          rightTurn();
           function_order[iterator] = 1;
           iterator++;
         }
       else if (irLeft > irRight)
         {
-          left();
+          leftTurn();
           function_order[iterator] = -1;
           iterator++;
         }
       else
         {
-          drive_speed(20, 20);
+          drive_speed(a, a);
           function_order[iterator] = 5;
           iterator++;
         }
@@ -126,14 +141,35 @@ int main(int argc, const char* argv[]){
       printf("%d %d\n", irLeft, irRight);
       pause(100);
 
+
+      drive_getTicks(left,right);
+      dl=(*left-pre_lt)*3.25/10;  //cm
+      dr=(*right-pre_rt)*3.25/10;  //cm
+
+      angle=(dl-dr)/10.58;  //radius
+      if(dl==dr)
+        distance=dl;
+      else
+        distance=fabsf(angle*(dl+dr)/2);
+      //printf("dl = %f, dr = %f, left = %i, right = %i", dl, dr, *left, *right);
+      //printf("distance=%f,angle=%f\n",distance,angle);
+      records[0]+=distance;
+      records[1]+=angle;
+
+      pre_lt=*left;
+      pre_rt=*right;
     }
 
   // Stop
   drive_speed(0, 0);
   int wallDistance = ping_cm(8);
+  printf("\nThe robot has moved %f cm and turned %f degree.\n",records[0],records[1]);
   printf("Distance to Wall: %i", wallDistance);
   simulator_stopSmokeTrail();
   backtrack(function_order, iterator);
+
+  int dist = ping_cm(8);
+  printf("final distance = %i\n", dist );
 
   return 0;
 }

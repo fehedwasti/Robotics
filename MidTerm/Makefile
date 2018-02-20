@@ -111,6 +111,21 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
+applications/MidTerm/CMakeFiles/pidTry.dir/rule:
+	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f CMakeFiles/Makefile2 applications/MidTerm/CMakeFiles/pidTry.dir/rule
+.PHONY : applications/MidTerm/CMakeFiles/pidTry.dir/rule
+
+# Convenience name for target.
+pidTry: applications/MidTerm/CMakeFiles/pidTry.dir/rule
+
+.PHONY : pidTry
+
+# fast build rule for target.
+pidTry/fast:
+	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f applications/MidTerm/CMakeFiles/pidTry.dir/build.make applications/MidTerm/CMakeFiles/pidTry.dir/build
+.PHONY : pidTry/fast
+
+# Convenience name for target.
 applications/MidTerm/CMakeFiles/test2.dir/rule:
 	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f CMakeFiles/Makefile2 applications/MidTerm/CMakeFiles/test2.dir/rule
 .PHONY : applications/MidTerm/CMakeFiles/test2.dir/rule
@@ -125,47 +140,32 @@ test2/fast:
 	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f applications/MidTerm/CMakeFiles/test2.dir/build.make applications/MidTerm/CMakeFiles/test2.dir/build
 .PHONY : test2/fast
 
-# Convenience name for target.
-applications/MidTerm/CMakeFiles/test.dir/rule:
-	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f CMakeFiles/Makefile2 applications/MidTerm/CMakeFiles/test.dir/rule
-.PHONY : applications/MidTerm/CMakeFiles/test.dir/rule
+pidTry.o: pidTry.c.o
 
-# Convenience name for target.
-test: applications/MidTerm/CMakeFiles/test.dir/rule
-
-.PHONY : test
-
-# fast build rule for target.
-test/fast:
-	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f applications/MidTerm/CMakeFiles/test.dir/build.make applications/MidTerm/CMakeFiles/test.dir/build
-.PHONY : test/fast
-
-test.o: test.c.o
-
-.PHONY : test.o
+.PHONY : pidTry.o
 
 # target to build an object file
-test.c.o:
-	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f applications/MidTerm/CMakeFiles/test.dir/build.make applications/MidTerm/CMakeFiles/test.dir/test.c.o
-.PHONY : test.c.o
+pidTry.c.o:
+	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f applications/MidTerm/CMakeFiles/pidTry.dir/build.make applications/MidTerm/CMakeFiles/pidTry.dir/pidTry.c.o
+.PHONY : pidTry.c.o
 
-test.i: test.c.i
+pidTry.i: pidTry.c.i
 
-.PHONY : test.i
+.PHONY : pidTry.i
 
 # target to preprocess a source file
-test.c.i:
-	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f applications/MidTerm/CMakeFiles/test.dir/build.make applications/MidTerm/CMakeFiles/test.dir/test.c.i
-.PHONY : test.c.i
+pidTry.c.i:
+	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f applications/MidTerm/CMakeFiles/pidTry.dir/build.make applications/MidTerm/CMakeFiles/pidTry.dir/pidTry.c.i
+.PHONY : pidTry.c.i
 
-test.s: test.c.s
+pidTry.s: pidTry.c.s
 
-.PHONY : test.s
+.PHONY : pidTry.s
 
 # target to generate assembly for a file
-test.c.s:
-	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f applications/MidTerm/CMakeFiles/test.dir/build.make applications/MidTerm/CMakeFiles/test.dir/test.c.s
-.PHONY : test.c.s
+pidTry.c.s:
+	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f applications/MidTerm/CMakeFiles/pidTry.dir/build.make applications/MidTerm/CMakeFiles/pidTry.dir/pidTry.c.s
+.PHONY : pidTry.c.s
 
 test2.o: test2.c.o
 
@@ -202,11 +202,11 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... pidTry"
 	@echo "... test2"
-	@echo "... test"
-	@echo "... test.o"
-	@echo "... test.i"
-	@echo "... test.s"
+	@echo "... pidTry.o"
+	@echo "... pidTry.i"
+	@echo "... pidTry.s"
 	@echo "... test2.o"
 	@echo "... test2.i"
 	@echo "... test2.s"

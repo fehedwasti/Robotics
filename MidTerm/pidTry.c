@@ -15,7 +15,7 @@ void back()
     for(int i=Index-1;i>=0;i-=2)
     {
         drive_speed(histories[i],histories[i-1]);
-        //same with the behaviour in the loop in run() 
+        //same with the behaviour in the loop in run()
         pause(500);
         drive_speed(0,0);
     }
@@ -46,7 +46,7 @@ void run()
     int T=500;   //sampling time
     int Ti=500;  //integral time
     int Td=500;  //derivative time
-    float Kp=1.4*5/3;//Kp=1.4; the calibration of P (1/Kp) is 0.6
+    float Kp=0.2*5/3;//Kp=1.4; the calibration of P (1/Kp) is 0.6
     float Ki=Kp*T/Ti;
     float Kd=Kp*Td/T;
 
@@ -59,9 +59,9 @@ void run()
     float distance=0;   //distance moved by the robot
     float angle=0;
 
-    while(dist>70)
+    while(dist>20)
     {
-        printf("%d\n",dist);
+        printf("dist = %d\n",dist);
 
         //get process variables
         freqout(11, 1, 38000);
@@ -70,7 +70,7 @@ void run()
         irRight = input(2);
 
         //PID controller
-        errorL=irLeft-0;   
+        errorL=irLeft-0;
         errorR=irRight-0;
         printf("errorL=%d,errorR=%d\n",errorL,errorR);
 
@@ -85,7 +85,7 @@ void run()
 
 
         outputL=Kp*errorL+Ki*integralL+Kd*derivativeL;
-        outputR=Kp*errorR+Ki*integralR+Kd*derivativeR; 
+        outputR=Kp*errorR+Ki*integralR+Kd*derivativeR;
         printf("outputL=%f,outputR=%f\n",outputL,outputR);
 
         vLeft=Vl-(int)outputL%Vl;
@@ -103,12 +103,12 @@ void run()
         printf("dl=%f,dr=%f\n",dl,dr);
         angle=(dl-dr)/10.58;  //radius
         if(dl==dr)
-        distance=dl;
+          distance=dl;
         else
-        distance=abs(angle*(dl+dr)/2);      
+          distance=abs(angle*(dl+dr)/2);
         records[0]+=distance;
         records[1]+=angle;
-        
+
         pre_lt=*left;
         pre_rt=*right;
         previous_errorL=errorL;
@@ -125,7 +125,7 @@ int main()
     simulator_startNewSmokeTrail();
     run();
     printf("\nThe robot has moved %f cm and turned %f degree.\n",records[0],records[1]);
-    pause(1000);    
+    pause(1000);
     back();
     simulator_stopSmokeTrail();
 }

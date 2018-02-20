@@ -12,6 +12,7 @@ applications/MidTerm/CMakeFiles/test2.dir/test2.c.o: include/serial.h
 applications/MidTerm/CMakeFiles/test2.dir/test2.c.o: include/simplei2c.h
 applications/MidTerm/CMakeFiles/test2.dir/test2.c.o: include/simpletext.h
 applications/MidTerm/CMakeFiles/test2.dir/test2.c.o: include/simpletools.h
+applications/MidTerm/CMakeFiles/test2.dir/test2.c.o: include/simulator.h
 applications/MidTerm/CMakeFiles/test2.dir/test2.c.o: include/sys/driver.h
 applications/MidTerm/CMakeFiles/test2.dir/test2.c.o: include/sys/sd.h
 

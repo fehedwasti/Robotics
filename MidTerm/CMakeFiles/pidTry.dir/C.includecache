@@ -6,23 +6,19 @@
 
 #IncludeRegexTransform: 
 
-/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/MidTerm/test2.c
+/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/MidTerm/pidTry.c
 stdio.h
--
-stdlib.h
--
-time.h
 -
 abdrive.h
 /Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/MidTerm/abdrive.h
-simpletext.h
-/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/MidTerm/simpletext.h
 simpletools.h
 /Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/MidTerm/simpletools.h
 ping.h
 /Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/MidTerm/ping.h
 simulator.h
 /Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/MidTerm/simulator.h
+math.h
+-
 
 include/abdrive.h
 simpletools.h
