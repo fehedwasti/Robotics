@@ -136,7 +136,7 @@ int main(int argc, const char* argv[]){
         }
 
 
-      printf("%d %d\n", irLeft, irRight);
+      printf("leftSensor = %d rightSensor = %d\n", irLeft, irRight);
       pause(100);
 
 

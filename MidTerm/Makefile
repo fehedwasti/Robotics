@@ -140,21 +140,6 @@ test2/fast:
 	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f applications/MidTerm/CMakeFiles/test2.dir/build.make applications/MidTerm/CMakeFiles/test2.dir/build
 .PHONY : test2/fast
 
-# Convenience name for target.
-applications/MidTerm/CMakeFiles/venet.dir/rule:
-	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f CMakeFiles/Makefile2 applications/MidTerm/CMakeFiles/venet.dir/rule
-.PHONY : applications/MidTerm/CMakeFiles/venet.dir/rule
-
-# Convenience name for target.
-venet: applications/MidTerm/CMakeFiles/venet.dir/rule
-
-.PHONY : venet
-
-# fast build rule for target.
-venet/fast:
-	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f applications/MidTerm/CMakeFiles/venet.dir/build.make applications/MidTerm/CMakeFiles/venet.dir/build
-.PHONY : venet/fast
-
 pidTry.o: pidTry.c.o
 
 .PHONY : pidTry.o
@@ -181,33 +166,6 @@ pidTry.s: pidTry.c.s
 pidTry.c.s:
 	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f applications/MidTerm/CMakeFiles/pidTry.dir/build.make applications/MidTerm/CMakeFiles/pidTry.dir/pidTry.c.s
 .PHONY : pidTry.c.s
-
-sensor.o: sensor.c.o
-
-.PHONY : sensor.o
-
-# target to build an object file
-sensor.c.o:
-	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f applications/MidTerm/CMakeFiles/venet.dir/build.make applications/MidTerm/CMakeFiles/venet.dir/sensor.c.o
-.PHONY : sensor.c.o
-
-sensor.i: sensor.c.i
-
-.PHONY : sensor.i
-
-# target to preprocess a source file
-sensor.c.i:
-	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f applications/MidTerm/CMakeFiles/venet.dir/build.make applications/MidTerm/CMakeFiles/venet.dir/sensor.c.i
-.PHONY : sensor.c.i
-
-sensor.s: sensor.c.s
-
-.PHONY : sensor.s
-
-# target to generate assembly for a file
-sensor.c.s:
-	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f applications/MidTerm/CMakeFiles/venet.dir/build.make applications/MidTerm/CMakeFiles/venet.dir/sensor.c.s
-.PHONY : sensor.c.s
 
 test2.o: test2.c.o
 
@@ -246,13 +204,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... pidTry"
 	@echo "... test2"
-	@echo "... venet"
 	@echo "... pidTry.o"
 	@echo "... pidTry.i"
 	@echo "... pidTry.s"
-	@echo "... sensor.o"
-	@echo "... sensor.i"
-	@echo "... sensor.s"
 	@echo "... test2.o"
 	@echo "... test2.i"
 	@echo "... test2.s"
