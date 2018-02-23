@@ -6,6 +6,20 @@
 
 #IncludeRegexTransform: 
 
+/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/MidTerm/functions.c
+stdio.h
+-
+abdrive.h
+/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/MidTerm/abdrive.h
+simpletext.h
+/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/MidTerm/simpletext.h
+simpletools.h
+/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/MidTerm/simpletools.h
+ping.h
+/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/MidTerm/ping.h
+simulator.h
+/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/MidTerm/simulator.h
+
 /Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/MidTerm/tunnel.c
 stdio.h
 -
@@ -23,6 +37,8 @@ ping.h
 /Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/MidTerm/ping.h
 simulator.h
 /Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/MidTerm/simulator.h
+functions.c
+/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/MidTerm/functions.c
 
 include/abdrive.h
 simpletools.h
