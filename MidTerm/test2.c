@@ -21,8 +21,6 @@ void leftTurn(){
 
 void backtrack(int order[], int itr){
 
-
-
   //Turn 180 degrees
   drive_goto(-10,-10);
   pause(1);
@@ -54,8 +52,9 @@ void backtrack(int order[], int itr){
     else{
       drive_speed(20,20);
     }
-    pause(150);
+    pause(145);
   }
+  drive_speed(0,0);
   simulator_stopSmokeTrail();
 }
 
@@ -66,8 +65,8 @@ int main(int argc, const char* argv[]){
   int *left=&lt;
   int *right=&rt;
   int pre_lt=0,pre_rt=0;
-  float dl=0,dr=0;    //distance moved by two wheels
-  float distance=0;   //distance moved by the robot
+  float dl=0,dr=0;
+  float distance=0;   //distance moved by the robot relative to start
   float angle=0;
   float records[2]={0,0};
 
@@ -76,18 +75,17 @@ int main(int argc, const char* argv[]){
   clock_t start, finish;
   double t_time;
 
-  // Drive ahead nice and slow
   int function_order[300];
   int iterator = 0;
 
   drive_speed(64, 64);
 
   simulator_startNewSmokeTrail();
+
   a = 27; b = a * 0.75; c = 0.6 * b; d = b;
   while(ping_cm(8) > 10) {
       b = d;
       long int lastCNT = CNT;
-
 
       // Read the left and right sensors
       int irLeft = 0;
@@ -151,8 +149,6 @@ int main(int argc, const char* argv[]){
         distance=dl;
       else
         distance=fabsf(angle*(dl+dr)/2);
-      //printf("dl = %f, dr = %f, left = %i, right = %i", dl, dr, *left, *right);
-      //printf("distance=%f,angle=%f\n",distance,angle);
       records[0]+=distance;
       records[1]+=angle;
 
@@ -163,9 +159,10 @@ int main(int argc, const char* argv[]){
   // Stop
   drive_speed(0, 0);
   int wallDistance = ping_cm(8);
-  printf("\nThe robot has moved %f cm and turned %f degree.\n",records[0],records[1]);
+  printf("\nThe robot has moved %f cm and turned %f radians.\n",records[0],records[1]);
   printf("Distance to Wall: %i", wallDistance);
   simulator_stopSmokeTrail();
+
   backtrack(function_order, iterator);
 
   int dist = ping_cm(8);
