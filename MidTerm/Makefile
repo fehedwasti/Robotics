@@ -126,19 +126,19 @@ pidTry/fast:
 .PHONY : pidTry/fast
 
 # Convenience name for target.
-applications/MidTerm/CMakeFiles/test2.dir/rule:
-	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f CMakeFiles/Makefile2 applications/MidTerm/CMakeFiles/test2.dir/rule
-.PHONY : applications/MidTerm/CMakeFiles/test2.dir/rule
+applications/MidTerm/CMakeFiles/tunnel.dir/rule:
+	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f CMakeFiles/Makefile2 applications/MidTerm/CMakeFiles/tunnel.dir/rule
+.PHONY : applications/MidTerm/CMakeFiles/tunnel.dir/rule
 
 # Convenience name for target.
-test2: applications/MidTerm/CMakeFiles/test2.dir/rule
+tunnel: applications/MidTerm/CMakeFiles/tunnel.dir/rule
 
-.PHONY : test2
+.PHONY : tunnel
 
 # fast build rule for target.
-test2/fast:
-	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f applications/MidTerm/CMakeFiles/test2.dir/build.make applications/MidTerm/CMakeFiles/test2.dir/build
-.PHONY : test2/fast
+tunnel/fast:
+	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f applications/MidTerm/CMakeFiles/tunnel.dir/build.make applications/MidTerm/CMakeFiles/tunnel.dir/build
+.PHONY : tunnel/fast
 
 pidTry.o: pidTry.c.o
 
@@ -167,32 +167,32 @@ pidTry.c.s:
 	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f applications/MidTerm/CMakeFiles/pidTry.dir/build.make applications/MidTerm/CMakeFiles/pidTry.dir/pidTry.c.s
 .PHONY : pidTry.c.s
 
-test2.o: test2.c.o
+tunnel.o: tunnel.c.o
 
-.PHONY : test2.o
+.PHONY : tunnel.o
 
 # target to build an object file
-test2.c.o:
-	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f applications/MidTerm/CMakeFiles/test2.dir/build.make applications/MidTerm/CMakeFiles/test2.dir/test2.c.o
-.PHONY : test2.c.o
+tunnel.c.o:
+	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f applications/MidTerm/CMakeFiles/tunnel.dir/build.make applications/MidTerm/CMakeFiles/tunnel.dir/tunnel.c.o
+.PHONY : tunnel.c.o
 
-test2.i: test2.c.i
+tunnel.i: tunnel.c.i
 
-.PHONY : test2.i
+.PHONY : tunnel.i
 
 # target to preprocess a source file
-test2.c.i:
-	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f applications/MidTerm/CMakeFiles/test2.dir/build.make applications/MidTerm/CMakeFiles/test2.dir/test2.c.i
-.PHONY : test2.c.i
+tunnel.c.i:
+	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f applications/MidTerm/CMakeFiles/tunnel.dir/build.make applications/MidTerm/CMakeFiles/tunnel.dir/tunnel.c.i
+.PHONY : tunnel.c.i
 
-test2.s: test2.c.s
+tunnel.s: tunnel.c.s
 
-.PHONY : test2.s
+.PHONY : tunnel.s
 
 # target to generate assembly for a file
-test2.c.s:
-	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f applications/MidTerm/CMakeFiles/test2.dir/build.make applications/MidTerm/CMakeFiles/test2.dir/test2.c.s
-.PHONY : test2.c.s
+tunnel.c.s:
+	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f applications/MidTerm/CMakeFiles/tunnel.dir/build.make applications/MidTerm/CMakeFiles/tunnel.dir/tunnel.c.s
+.PHONY : tunnel.c.s
 
 # Help Target
 help:
@@ -203,13 +203,13 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... pidTry"
-	@echo "... test2"
+	@echo "... tunnel"
 	@echo "... pidTry.o"
 	@echo "... pidTry.i"
 	@echo "... pidTry.s"
-	@echo "... test2.o"
-	@echo "... test2.i"
-	@echo "... test2.s"
+	@echo "... tunnel.o"
+	@echo "... tunnel.i"
+	@echo "... tunnel.s"
 .PHONY : help
 
 
