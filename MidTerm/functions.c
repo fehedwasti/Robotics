@@ -4,6 +4,7 @@
 #include "simpletools.h"
 #include "ping.h"
 #include "simulator.h"
+#include <math.h>
 
 int a,b,c,d;
 int order[300];
@@ -14,9 +15,14 @@ int lt=0,rt=0;
 int *left=&lt;
 int *right=&rt;
 int pre_lt=0,pre_rt=0;
-float dl=0,dr=0;
+float tickL=0,tickR=0;
 float distance=0;   //distance moved by the robot relative to start
 float angle=0;
+float pre_angle=0;
+float dx=0,dy=0;
+float sumx=0,sumy=0;
+float rl=0,rr=0,rm=0;
+float p=0,q=0;
 float records[2]={0,0};
 
 void rightTurn(){
@@ -84,28 +90,46 @@ void forward(){
           itr++;
         }
 
-
       printf("leftSensor = %d rightSensor = %d\n", irLeft, irRight);
       pause(100);
 
-
       drive_getTicks(left,right);
-      dl=(*left-pre_lt)*3.25/10;  //cm
-      dr=(*right-pre_rt)*3.25/10;  //cm
+      tickL=*left-pre_lt; 
+      tickR=*right-pre_rt;
 
-      angle=(dl-dr)/10.58;  //radius
-      if(dl==dr)
-        distance=dl;
+      angle=(tickL-tickR)/(105.8/3.25);  //radius
+
+      if(angle==0)
+      {
+        sumx+=0;
+        sumy+=tickL;
+      }
       else
-        distance=fabsf(angle*(dl+dr)/2);
-      records[0]+=distance;
-      records[1]+=angle;
+      {
+        rl=tickL/angle;   //ticks
+        rr=tickR/angle;
+        rm=(rl+rr)/2;
 
+        p=cos(pre_angle)*rm;//x of the last point from the center of the circle
+        q=cos(pre_angle+angle)*rm;//x of the current point from...
+        dx=p-q;
+        p=sin(pre_angle)*rm;
+        q=sin(pre_angle+angle)*rm;
+        dy=q-p;
+
+        sumx+=dx;
+        sumy+=dy;
+      }
+      pre_angle+=angle;
       pre_lt=*left;
       pre_rt=*right;
     }
     simulator_stopSmokeTrail();
+    records[0]=sqrt(sumx*sumx+sumy*sumy)*0.325;
+    records[1]=atan(sumx/sumy)*180/3.1415;//relative angle
 
+    int wallDistance=ping_cm(8);
+    printf("Distance to Wall: %i", wallDistance);
     //Turn 180 degrees
     drive_goto(-10,-10);
     pause(1);

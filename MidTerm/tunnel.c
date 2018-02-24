@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <math.h>
 
 #include "abdrive.h"
 #include "simpletext.h"
@@ -15,10 +16,9 @@ int main(int argc, const char* argv[]){
   forward();
   // Stop
   drive_speed(0, 0);
-  //Measure Wall distance
-  int wallDistance = ping_cm(8);
-  printf("\nThe robot has moved %f cm and turned %f radians.\n",records[0],records[1]);
-  printf("Distance to Wall: %i", wallDistance);
+  //need to print out relative distance and angle.
+  printf("\nThe robot has moved %f cm in a direction of %f degree.\n",records[0],records[1]);
+  
   //Go Back to start
   backtrack();
 
