@@ -80,14 +80,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(CMAKE_COMMAND) -E cmake_progress_start "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/CMakeFiles" "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/MidTerm/CMakeFiles/progress.marks"
-	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f CMakeFiles/Makefile2 applications/MidTerm/all
+	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(CMAKE_COMMAND) -E cmake_progress_start "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/CMakeFiles" "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/groupC2_MidTerm/CMakeFiles/progress.marks"
+	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f CMakeFiles/Makefile2 applications/groupC2_MidTerm/all
 	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f CMakeFiles/Makefile2 applications/MidTerm/clean
+	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f CMakeFiles/Makefile2 applications/groupC2_MidTerm/clean
 .PHONY : clean
 
 # The main clean target
@@ -97,12 +97,12 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f CMakeFiles/Makefile2 applications/MidTerm/preinstall
+	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f CMakeFiles/Makefile2 applications/groupC2_MidTerm/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f CMakeFiles/Makefile2 applications/MidTerm/preinstall
+	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f CMakeFiles/Makefile2 applications/groupC2_MidTerm/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
@@ -111,19 +111,19 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-applications/MidTerm/CMakeFiles/tunnel.dir/rule:
-	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f CMakeFiles/Makefile2 applications/MidTerm/CMakeFiles/tunnel.dir/rule
-.PHONY : applications/MidTerm/CMakeFiles/tunnel.dir/rule
+applications/groupC2_MidTerm/CMakeFiles/Trials.dir/rule:
+	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f CMakeFiles/Makefile2 applications/groupC2_MidTerm/CMakeFiles/Trials.dir/rule
+.PHONY : applications/groupC2_MidTerm/CMakeFiles/Trials.dir/rule
 
 # Convenience name for target.
-tunnel: applications/MidTerm/CMakeFiles/tunnel.dir/rule
+Trials: applications/groupC2_MidTerm/CMakeFiles/Trials.dir/rule
 
-.PHONY : tunnel
+.PHONY : Trials
 
 # fast build rule for target.
-tunnel/fast:
-	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f applications/MidTerm/CMakeFiles/tunnel.dir/build.make applications/MidTerm/CMakeFiles/tunnel.dir/build
-.PHONY : tunnel/fast
+Trials/fast:
+	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f applications/groupC2_MidTerm/CMakeFiles/Trials.dir/build.make applications/groupC2_MidTerm/CMakeFiles/Trials.dir/build
+.PHONY : Trials/fast
 
 tunnel.o: tunnel.c.o
 
@@ -131,7 +131,7 @@ tunnel.o: tunnel.c.o
 
 # target to build an object file
 tunnel.c.o:
-	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f applications/MidTerm/CMakeFiles/tunnel.dir/build.make applications/MidTerm/CMakeFiles/tunnel.dir/tunnel.c.o
+	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f applications/groupC2_MidTerm/CMakeFiles/Trials.dir/build.make applications/groupC2_MidTerm/CMakeFiles/Trials.dir/tunnel.c.o
 .PHONY : tunnel.c.o
 
 tunnel.i: tunnel.c.i
@@ -140,7 +140,7 @@ tunnel.i: tunnel.c.i
 
 # target to preprocess a source file
 tunnel.c.i:
-	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f applications/MidTerm/CMakeFiles/tunnel.dir/build.make applications/MidTerm/CMakeFiles/tunnel.dir/tunnel.c.i
+	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f applications/groupC2_MidTerm/CMakeFiles/Trials.dir/build.make applications/groupC2_MidTerm/CMakeFiles/Trials.dir/tunnel.c.i
 .PHONY : tunnel.c.i
 
 tunnel.s: tunnel.c.s
@@ -149,7 +149,7 @@ tunnel.s: tunnel.c.s
 
 # target to generate assembly for a file
 tunnel.c.s:
-	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f applications/MidTerm/CMakeFiles/tunnel.dir/build.make applications/MidTerm/CMakeFiles/tunnel.dir/tunnel.c.s
+	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f applications/groupC2_MidTerm/CMakeFiles/Trials.dir/build.make applications/groupC2_MidTerm/CMakeFiles/Trials.dir/tunnel.c.s
 .PHONY : tunnel.c.s
 
 # Help Target
@@ -160,7 +160,7 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... tunnel"
+	@echo "... Trials"
 	@echo "... tunnel.o"
 	@echo "... tunnel.i"
 	@echo "... tunnel.s"

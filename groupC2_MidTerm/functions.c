@@ -140,7 +140,7 @@ void backtrack(){
     else{
       drive_speed(20,20);
     }
-    pause(145);
+    pause(135);
   }
   drive_speed(0,0);
   simulator_stopSmokeTrail();
