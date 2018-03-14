@@ -7,8 +7,6 @@
 #IncludeRegexTransform: 
 
 /Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/TheRace/maze.c
-stdio.h
--
 stdlib.h
 -
 time.h

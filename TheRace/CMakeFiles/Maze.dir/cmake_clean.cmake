@@ -1,10 +1,10 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/Maze.dir/maze.c.o"
-  "Maze.pdb"
-  "Maze"
+  "CMakeFiles/maze.dir/maze.c.o"
+  "maze.pdb"
+  "maze"
 )
 
 # Per-language clean rules from dependency scanning.
 foreach(lang C)
-  include(CMakeFiles/Maze.dir/cmake_clean_${lang}.cmake OPTIONAL)
+  include(CMakeFiles/maze.dir/cmake_clean_${lang}.cmake OPTIONAL)
 endforeach()

@@ -1,1 +1,1 @@
-DECLARE_APP(Maze maze.c)
+DECLARE_APP(maze maze.c)

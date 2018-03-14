@@ -49,66 +49,66 @@ CMAKE_SOURCE_DIR = "/Users/fehedwasti/Documents/University/1st Year/robotics/Sim
 CMAKE_BINARY_DIR = "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client"
 
 # Include any dependencies generated for this target.
-include applications/TheRace/CMakeFiles/Maze.dir/depend.make
+include applications/TheRace/CMakeFiles/maze.dir/depend.make
 
 # Include the progress variables for this target.
-include applications/TheRace/CMakeFiles/Maze.dir/progress.make
+include applications/TheRace/CMakeFiles/maze.dir/progress.make
 
 # Include the compile flags for this target's objects.
-include applications/TheRace/CMakeFiles/Maze.dir/flags.make
+include applications/TheRace/CMakeFiles/maze.dir/flags.make
 
-applications/TheRace/CMakeFiles/Maze.dir/maze.c.o: applications/TheRace/CMakeFiles/Maze.dir/flags.make
-applications/TheRace/CMakeFiles/Maze.dir/maze.c.o: applications/TheRace/maze.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object applications/TheRace/CMakeFiles/Maze.dir/maze.c.o"
-	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/TheRace" && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Maze.dir/maze.c.o   -c "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/TheRace/maze.c"
+applications/TheRace/CMakeFiles/maze.dir/maze.c.o: applications/TheRace/CMakeFiles/maze.dir/flags.make
+applications/TheRace/CMakeFiles/maze.dir/maze.c.o: applications/TheRace/maze.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object applications/TheRace/CMakeFiles/maze.dir/maze.c.o"
+	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/TheRace" && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/maze.dir/maze.c.o   -c "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/TheRace/maze.c"
 
-applications/TheRace/CMakeFiles/Maze.dir/maze.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Maze.dir/maze.c.i"
-	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/TheRace" && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/TheRace/maze.c" > CMakeFiles/Maze.dir/maze.c.i
+applications/TheRace/CMakeFiles/maze.dir/maze.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/maze.dir/maze.c.i"
+	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/TheRace" && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/TheRace/maze.c" > CMakeFiles/maze.dir/maze.c.i
 
-applications/TheRace/CMakeFiles/Maze.dir/maze.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Maze.dir/maze.c.s"
-	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/TheRace" && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/TheRace/maze.c" -o CMakeFiles/Maze.dir/maze.c.s
+applications/TheRace/CMakeFiles/maze.dir/maze.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/maze.dir/maze.c.s"
+	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/TheRace" && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/TheRace/maze.c" -o CMakeFiles/maze.dir/maze.c.s
 
-applications/TheRace/CMakeFiles/Maze.dir/maze.c.o.requires:
+applications/TheRace/CMakeFiles/maze.dir/maze.c.o.requires:
 
-.PHONY : applications/TheRace/CMakeFiles/Maze.dir/maze.c.o.requires
+.PHONY : applications/TheRace/CMakeFiles/maze.dir/maze.c.o.requires
 
-applications/TheRace/CMakeFiles/Maze.dir/maze.c.o.provides: applications/TheRace/CMakeFiles/Maze.dir/maze.c.o.requires
-	$(MAKE) -f applications/TheRace/CMakeFiles/Maze.dir/build.make applications/TheRace/CMakeFiles/Maze.dir/maze.c.o.provides.build
-.PHONY : applications/TheRace/CMakeFiles/Maze.dir/maze.c.o.provides
+applications/TheRace/CMakeFiles/maze.dir/maze.c.o.provides: applications/TheRace/CMakeFiles/maze.dir/maze.c.o.requires
+	$(MAKE) -f applications/TheRace/CMakeFiles/maze.dir/build.make applications/TheRace/CMakeFiles/maze.dir/maze.c.o.provides.build
+.PHONY : applications/TheRace/CMakeFiles/maze.dir/maze.c.o.provides
 
-applications/TheRace/CMakeFiles/Maze.dir/maze.c.o.provides.build: applications/TheRace/CMakeFiles/Maze.dir/maze.c.o
+applications/TheRace/CMakeFiles/maze.dir/maze.c.o.provides.build: applications/TheRace/CMakeFiles/maze.dir/maze.c.o
 
 
-# Object files for target Maze
-Maze_OBJECTS = \
-"CMakeFiles/Maze.dir/maze.c.o"
+# Object files for target maze
+maze_OBJECTS = \
+"CMakeFiles/maze.dir/maze.c.o"
 
-# External object files for target Maze
-Maze_EXTERNAL_OBJECTS =
+# External object files for target maze
+maze_EXTERNAL_OBJECTS =
 
-applications/TheRace/Maze: applications/TheRace/CMakeFiles/Maze.dir/maze.c.o
-applications/TheRace/Maze: applications/TheRace/CMakeFiles/Maze.dir/build.make
-applications/TheRace/Maze: src/libclient.a
-applications/TheRace/Maze: applications/TheRace/CMakeFiles/Maze.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable Maze"
-	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/TheRace" && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Maze.dir/link.txt --verbose=$(VERBOSE)
+applications/TheRace/maze: applications/TheRace/CMakeFiles/maze.dir/maze.c.o
+applications/TheRace/maze: applications/TheRace/CMakeFiles/maze.dir/build.make
+applications/TheRace/maze: src/libclient.a
+applications/TheRace/maze: applications/TheRace/CMakeFiles/maze.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable maze"
+	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/TheRace" && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/maze.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-applications/TheRace/CMakeFiles/Maze.dir/build: applications/TheRace/Maze
+applications/TheRace/CMakeFiles/maze.dir/build: applications/TheRace/maze
 
-.PHONY : applications/TheRace/CMakeFiles/Maze.dir/build
+.PHONY : applications/TheRace/CMakeFiles/maze.dir/build
 
-applications/TheRace/CMakeFiles/Maze.dir/requires: applications/TheRace/CMakeFiles/Maze.dir/maze.c.o.requires
+applications/TheRace/CMakeFiles/maze.dir/requires: applications/TheRace/CMakeFiles/maze.dir/maze.c.o.requires
 
-.PHONY : applications/TheRace/CMakeFiles/Maze.dir/requires
+.PHONY : applications/TheRace/CMakeFiles/maze.dir/requires
 
-applications/TheRace/CMakeFiles/Maze.dir/clean:
-	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/TheRace" && $(CMAKE_COMMAND) -P CMakeFiles/Maze.dir/cmake_clean.cmake
-.PHONY : applications/TheRace/CMakeFiles/Maze.dir/clean
+applications/TheRace/CMakeFiles/maze.dir/clean:
+	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/TheRace" && $(CMAKE_COMMAND) -P CMakeFiles/maze.dir/cmake_clean.cmake
+.PHONY : applications/TheRace/CMakeFiles/maze.dir/clean
 
-applications/TheRace/CMakeFiles/Maze.dir/depend:
-	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/TheRace" "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/TheRace" "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/TheRace/CMakeFiles/Maze.dir/DependInfo.cmake" --color=$(COLOR)
-.PHONY : applications/TheRace/CMakeFiles/Maze.dir/depend
+applications/TheRace/CMakeFiles/maze.dir/depend:
+	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/TheRace" "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/TheRace" "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client/applications/TheRace/CMakeFiles/maze.dir/DependInfo.cmake" --color=$(COLOR)
+.PHONY : applications/TheRace/CMakeFiles/maze.dir/depend
 

@@ -111,19 +111,19 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-applications/TheRace/CMakeFiles/Maze.dir/rule:
-	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f CMakeFiles/Makefile2 applications/TheRace/CMakeFiles/Maze.dir/rule
-.PHONY : applications/TheRace/CMakeFiles/Maze.dir/rule
+applications/TheRace/CMakeFiles/maze.dir/rule:
+	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f CMakeFiles/Makefile2 applications/TheRace/CMakeFiles/maze.dir/rule
+.PHONY : applications/TheRace/CMakeFiles/maze.dir/rule
 
 # Convenience name for target.
-Maze: applications/TheRace/CMakeFiles/Maze.dir/rule
+maze: applications/TheRace/CMakeFiles/maze.dir/rule
 
-.PHONY : Maze
+.PHONY : maze
 
 # fast build rule for target.
-Maze/fast:
-	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f applications/TheRace/CMakeFiles/Maze.dir/build.make applications/TheRace/CMakeFiles/Maze.dir/build
-.PHONY : Maze/fast
+maze/fast:
+	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f applications/TheRace/CMakeFiles/maze.dir/build.make applications/TheRace/CMakeFiles/maze.dir/build
+.PHONY : maze/fast
 
 maze.o: maze.c.o
 
@@ -131,7 +131,7 @@ maze.o: maze.c.o
 
 # target to build an object file
 maze.c.o:
-	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f applications/TheRace/CMakeFiles/Maze.dir/build.make applications/TheRace/CMakeFiles/Maze.dir/maze.c.o
+	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f applications/TheRace/CMakeFiles/maze.dir/build.make applications/TheRace/CMakeFiles/maze.dir/maze.c.o
 .PHONY : maze.c.o
 
 maze.i: maze.c.i
@@ -140,7 +140,7 @@ maze.i: maze.c.i
 
 # target to preprocess a source file
 maze.c.i:
-	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f applications/TheRace/CMakeFiles/Maze.dir/build.make applications/TheRace/CMakeFiles/Maze.dir/maze.c.i
+	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f applications/TheRace/CMakeFiles/maze.dir/build.make applications/TheRace/CMakeFiles/maze.dir/maze.c.i
 .PHONY : maze.c.i
 
 maze.s: maze.c.s
@@ -149,7 +149,7 @@ maze.s: maze.c.s
 
 # target to generate assembly for a file
 maze.c.s:
-	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f applications/TheRace/CMakeFiles/Maze.dir/build.make applications/TheRace/CMakeFiles/Maze.dir/maze.c.s
+	cd "/Users/fehedwasti/Documents/University/1st Year/robotics/Simulator_Release_180107/Client" && $(MAKE) -f applications/TheRace/CMakeFiles/maze.dir/build.make applications/TheRace/CMakeFiles/maze.dir/maze.c.s
 .PHONY : maze.c.s
 
 # Help Target
@@ -160,7 +160,7 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... Maze"
+	@echo "... maze"
 	@echo "... maze.o"
 	@echo "... maze.i"
 	@echo "... maze.s"

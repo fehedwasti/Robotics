@@ -1,1 +1,1 @@
-/Library/Developer/CommandLineTools/usr/bin/c++   -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/Maze.dir/maze.c.o  -o Maze ../../src/libclient.a 
+/Library/Developer/CommandLineTools/usr/bin/c++   -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/maze.dir/maze.c.o  -o maze ../../src/libclient.a 
