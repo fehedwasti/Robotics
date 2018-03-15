@@ -25,6 +25,9 @@ int direction_itr = 0;
 int junctions[300];
 int junc_itr = 0;
 int flipCount = 0;
+int leftCount = 0;
+int rightCount = 0;
+int oneVisited, twoVisited = 0;
 int final;
 int x = 1;    //Robot co-ordinates
 int y = 1;
@@ -86,7 +89,11 @@ void forward(int n){
 }
 
 void turnLeft(){
-  drive_goto(-26,25);
+  if (leftCount % 2 == 0)
+    drive_goto(-26,25);
+  else
+    drive_goto(-25,26);
+  leftCount++;
   turns++;
   switch(facing){
     case up:
@@ -105,7 +112,11 @@ void turnLeft(){
 }
 
 void turnRight(){
-  drive_goto(26,-25);
+  if (rightCount % 2 == 0)
+    drive_goto(26,-25);
+  else
+    drive_goto(25,-26);
+  rightCount++;
   turns--;
   switch(facing){
     case up:
@@ -130,7 +141,7 @@ void backward(int n){
 
 void turn180(){
   if (flipCount % 2 == 0){
-    drive_goto(51,-52);
+    drive_goto(52,-51);
   }
   else{
     drive_goto(-51,52);
@@ -359,58 +370,24 @@ void checkAndGo(direction currentView){
 
 void backup(int iterations){
   int reversing;
-  int turnback = 0;
   for (int i = 0; i < iterations; i++){
     reversing = directions[direction_itr-1];
-    if (turnback == 0){
-      changeDirectionTo(reversing);
-      backward(baseSpeed);
-      if (reversing !=directions[direction_itr-2]){
-        turnback = 1;
-      }
-    }
-    else{
-      changeDirectionTo((directions[direction_itr-1]+2) % 4);
+      changeDirectionTo((reversing + 2) % 4);
       forward(baseSpeed);
-    }
-    if(reversing==up){
-      y--;
-    }
-    else if(reversing == down){
-      y++;
-    }
-    else if(reversing == left){
-      x++;
-    }
-    else if(reversing == right){
-      x--;
-    }
-
-    if (i == iterations-1){
-      if (turnback == 0){
-        if (read_right() == 1){
-          turnRight();
-          forward(baseSpeed);
-          if (facing == 0){
-            y++;
-          }
-          else if(facing == 1){
-            x--;
-          }
-          else if (facing == 2){
-            y--;
-          }
-          else if (facing == 3){
-            x++;
-          }
-          if(endPhase1==0){
-            storeDirection(facing);
-          }
-        }
+      if(reversing==up){
+        y--;
       }
+      else if(reversing == down){
+        y++;
+      }
+      else if(reversing == left){
+        x++;
+      }
+      else if(reversing == right){
+        x--;
+      }
+      direction_itr--;
     }
-    direction_itr--;
-  }
 
 }
 
@@ -469,9 +446,18 @@ void phase1(){
     print("currently facing: %d\n", facing);
     print("\n");
     checkAndGo(facing);
+    if ((x == 1) && (y == 4)){
+      oneVisited = 1;
+      printf("ONEONEONEONEONEONE\n");
+    }
+    if ((x == 4) && (y == 1)){
+      twoVisited = 1;
+      printf("TWOTWOTWOTWOTWOTWO\n");
+    }
     junction();
+
   }
-  while ((x != 1) || (y != 1));
+  while ((x != 1) || (y != 1) || (oneVisited == 0) || (twoVisited == 0));
 
   changeDirectionTo(up);
   backward(baseSpeed-10);
