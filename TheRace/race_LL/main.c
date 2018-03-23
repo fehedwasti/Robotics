@@ -2,6 +2,7 @@
 
 int main()
 {
+    drive_setRampStep(64);
     drive_speed(128,128);
     simulator_startNewSmokeTrail();
     printf("\n--------------------Preparing-----------------------\n");
@@ -10,7 +11,7 @@ int main()
     printf("\n------------------PHASE 1 START---------------------\n");
     phase1();
     printf("\n------------------PHASE 1 FINISH----------------------\n");
-    pause(2000);
+    pause(1000);
     phase2();
     printf("\n------------------PHASE 2 FINISH--------------------\n");
     simulator_stopSmokeTrail();

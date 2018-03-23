@@ -79,41 +79,13 @@ int forWard(struct node *routeHead,struct node *current_square,struct node *end)
     */
     if(routeHead==NULL) //This route is an empty list!
 	return 1;
-	printf("\n......forward......\n");
-	struct node* p=current_square;
-    
-	while(p!=end)
-	{
-        if(p==nodeTail) //the end node not in this list
-		break;		
-        drive_goto(W_tick,W_tick);
-
-        if((p->direction-p->next->direction==-1)||(p->direction-p->next->direction==3))
-        toRightDirection();
-        else if((p->direction-p->next->direction==1)||(p->direction-p->next->direction==-3))
-        toLeftDirection();        
-
-        p=p->next;
-	}
-    if((p->direction-p->previous->direction==-1)||(p->direction-p->previous->direction==3))
-    toRightDirection();
-    else if((p->direction-p->previous->direction==1)||(p->direction-p->previous->direction==-3))
-    toLeftDirection();  
-    printf(".......finish......\n\n");
-	return 0;
-}
-int forWard_faster(struct node *routeHead,struct node *current_square,struct node *end)
-{
-    if(routeHead==NULL) //This route is an empty list!
-	return 1;
+    printf("\n......forward......\n");
 	int straightD=1;
 	struct node* p=current_square;
 	while(p!=end)
 	{
         if((p->direction-p->next->direction)%2==0)
-        {
-            straightD++;
-        }
+        straightD++;
         else
         {
             drive_goto(straightD*W_tick,straightD*W_tick);
@@ -128,6 +100,11 @@ int forWard_faster(struct node *routeHead,struct node *current_square,struct nod
         p=p->next;
 	}
     drive_goto((straightD-1)*W_tick,(straightD-1)*W_tick);
+    if((p->direction-p->previous->direction==-1)||(p->direction-p->previous->direction==3))
+    toRightDirection();
+    else if((p->direction-p->previous->direction==1)||(p->direction-p->previous->direction==-3))
+    toLeftDirection(); 
+    printf(".......finish......\n\n");
 	return 0;
 }
 int backward(struct node *routeHead,struct node *current_square,struct node *end)
@@ -140,35 +117,40 @@ int backward(struct node *routeHead,struct node *current_square,struct node *end
     \(normally exit with 0)
     \Note:the end node should be went throught BEFORE the current square
     */
-    if(routeHead==NULL) //no node in this list
+    if(routeHead==NULL) //This route is an empty list!
 	return 1;
-	printf("\n......backward......\n");
+    printf("\n......backward......\n");
+	int straightD=0;
 	struct node* p=current_square;
 	while(p!=end)
 	{
         if(p==routeHead) //the stop node not in this list
 		break;
-        if((p->direction-p->previous->direction==1)||(p->direction-p->previous->direction==-3))
-        toLeftDirection();
-        else if((p->direction-p->previous->direction==-1)||(p->direction-p->previous->direction==3))
-        toRightDirection();
-
-        drive_goto(-W_tick,-W_tick);
-
-        p=p->previous;
+        if((p->direction-p->previous->direction)%2==0)
+        straightD++;
+        else
+        {
+            drive_goto(-(straightD)*W_tick,-(straightD)*W_tick);
+            if((p->direction-p->previous->direction==1)||(p->direction-p->previous->direction==-3))
+            toLeftDirection();
+            else if((p->direction-p->previous->direction==-1)||(p->direction-p->previous->direction==3))
+            toRightDirection();
+            
+            straightD=1;
+        }   
+        p=p->previous;  
 	}
-    printf(".......finish.......\n\n");
+    drive_goto(-(straightD)*W_tick,-(straightD)*W_tick);
     if(p==routeHead)
-    {
-        checkDirectionWhenStartingPoint();
-    }
+    checkDirectionWhenStartingPoint();
     else
     {
-        if((p->direction-p->previous->direction==1)||(p->direction-p->previous->direction==-3))
-            toLeftDirection();
-        else if((p->direction-p->previous->direction==-1)||(p->direction-p->previous->direction==3))
-            toRightDirection();
+        if((p->direction-p->previous->direction==-1)||(p->direction-p->previous->direction==3))
+        toRightDirection();
+        else if((p->direction-p->previous->direction==1)||(p->direction-p->previous->direction==-3))
+        toLeftDirection(); 
     }
+    printf(".......finish......\n\n");
 	return 0;
 }
 int leftJunc()
@@ -622,7 +604,6 @@ struct route* addRoute(struct node* nodeHead,struct node* nodeTail)
 
     return firstRoute;
 }
-
 struct route* routeContainThisNode(struct node* aNode)
 {
     struct route* aRoute=firstRoute;

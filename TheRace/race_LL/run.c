@@ -198,5 +198,5 @@ void phase2()
     showAllRoutes();
     struct route* shortestRoute=getShortestRoute(firstRoute);
     printf("\n------------------PHASE 2 START---------------------\n");
-    forWard_faster(shortestRoute->pathHead,shortestRoute->pathHead,shortestRoute->pathTail);   
+    forWard(shortestRoute->pathHead,shortestRoute->pathHead,shortestRoute->pathTail);   
 }
