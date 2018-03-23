@@ -79,16 +79,13 @@ int forWard(struct node *routeHead,struct node *current_square,struct node *end)
     */
     if(routeHead==NULL) //This route is an empty list!
 	return 1;
-	printf("forwarding......\n");
+	printf("\n......forward......\n");
 	struct node* p=current_square;
     
 	while(p!=end)
 	{
         if(p==nodeTail) //the end node not in this list
-		break;
-
-        printf("(%d,%d,%d)\n",p->direction,p->squareX,p->squareY);
-		
+		break;		
         drive_goto(W_tick,W_tick);
 
         if((p->direction-p->next->direction==-1)||(p->direction-p->next->direction==3))
@@ -97,29 +94,22 @@ int forWard(struct node *routeHead,struct node *current_square,struct node *end)
         toLeftDirection();        
 
         p=p->next;
-        printf("one movement finished\n");
 	}
     if((p->direction-p->previous->direction==-1)||(p->direction-p->previous->direction==3))
     toRightDirection();
     else if((p->direction-p->previous->direction==1)||(p->direction-p->previous->direction==-3))
     toLeftDirection();  
-
+    printf(".......finish......\n\n");
 	return 0;
 }
 int forWard_faster(struct node *routeHead,struct node *current_square,struct node *end)
 {
     if(routeHead==NULL) //This route is an empty list!
 	return 1;
-	int straightD=0;
+	int straightD=1;
 	struct node* p=current_square;
 	while(p!=end)
 	{
-		if(p==routeHead) //the end node not in this list
-		{
-            printf("ERROR:In this route robot didn't go through the node(%d,%d).\n",end->squareX,end->squareY);
-            return 1;
-        }
-
         if((p->direction-p->next->direction)%2==0)
         {
             straightD++;
@@ -127,16 +117,17 @@ int forWard_faster(struct node *routeHead,struct node *current_square,struct nod
         else
         {
             drive_goto(straightD*W_tick,straightD*W_tick);
-            if(p->direction-p->next->direction==1)
+            if((p->direction-p->next->direction==-1)||(p->direction-p->next->direction==3))
             toRightDirection();
-            else if(p->direction-p->next->direction==-1)
-            toLeftDirection();   
+            else if((p->direction-p->next->direction==1)||(p->direction-p->next->direction==-3))
+            toLeftDirection(); 
 
-            straightD=0;
+            straightD=1;
         }
 
         p=p->next;
 	}
+    drive_goto((straightD-1)*W_tick,(straightD-1)*W_tick);
 	return 0;
 }
 int backward(struct node *routeHead,struct node *current_square,struct node *end)
@@ -151,16 +142,12 @@ int backward(struct node *routeHead,struct node *current_square,struct node *end
     */
     if(routeHead==NULL) //no node in this list
 	return 1;
-	 printf("bacwarding......\n");
+	printf("\n......backward......\n");
 	struct node* p=current_square;
 	while(p!=end)
 	{
-        printf("(%d,%d,%d)\n",p->direction,p->squareX,p->squareY);
-		
         if(p==routeHead) //the stop node not in this list
 		break;
-        printf("routeHead(%d,%d,%d)\n",routeHead->direction,
-                    routeHead->squareX,routeHead->squareY);
         if((p->direction-p->previous->direction==1)||(p->direction-p->previous->direction==-3))
         toLeftDirection();
         else if((p->direction-p->previous->direction==-1)||(p->direction-p->previous->direction==3))
@@ -170,7 +157,7 @@ int backward(struct node *routeHead,struct node *current_square,struct node *end
 
         p=p->previous;
 	}
-    printf("---end---\n");
+    printf(".......finish.......\n\n");
     if(p==routeHead)
     {
         checkDirectionWhenStartingPoint();
@@ -182,8 +169,6 @@ int backward(struct node *routeHead,struct node *current_square,struct node *end
         else if((p->direction-p->previous->direction==-1)||(p->direction-p->previous->direction==3))
             toRightDirection();
     }
-    
-    printf("heallllllllo\n");
 	return 0;
 }
 int leftJunc()
@@ -486,8 +471,7 @@ struct junction* updateThisJunction(struct junction* aJunction,
         int dx=preNode->squareX-aJunction->juncNode->squareX;
         int dy=preNode->squareY-aJunction->juncNode->squareY;
         int directionD=preNode->direction-aJunction->juncNode->previous->direction;
-        printf("previousDirection:%d, directionD:%d\n",
-                preNode->direction,directionD);
+
         if (dx==0&&dy>0)
         {
             switch(directionD)
@@ -563,29 +547,20 @@ struct junction* updateJunctionList(struct junction* head)
 {
     /*To check if all elements in this list are junctions*/
     struct junction *aJunction=head;
-    struct junction *p=NULL,*test=head;
+    struct junction *p=NULL;
     int r=0,f=0,l=0;
-    while(test!=NULL)
-    {
-        printf("(%d,%d)\n",test->juncNode->squareX,test->juncNode->squareY);
-        test=test->next;
-    }
+
     while(aJunction!=NULL)
     {
         r=aJunction->right;
         f=aJunction->front;
         l=aJunction->left;
-        printf("checking the junction(%d,%d)\n",
-                aJunction->juncNode->squareX,aJunction->juncNode->squareY);
-        printf("r=%d,f=%d,l=%d\n",r,f,l);
 
         if((r==2&&f==0&&l==0)||(r==0&&f==2&&l==0)||(r==0&&f==0&&l==2)||(r+f+l)==0)
         {
-            printf("start removing a junction\n");
             p=aJunction;
             if(aJunction->previous==NULL)
             {
-                printf("This junction is a head\n");
                 if(aJunction->next!=NULL)
                 aJunction->next->previous=NULL;
                 aJunction=aJunction->next;
@@ -593,23 +568,15 @@ struct junction* updateJunctionList(struct junction* head)
             }    
             else
             {
-                printf("not a head\n");
                 aJunction->previous->next=aJunction->next;
                 if(aJunction->next!=NULL)
                 aJunction->next->previous=aJunction->previous;
                 aJunction=aJunction->next;
             }
             free(p);
-            printf("removed a junction\n");
         } 
         else
         aJunction=aJunction->next;       
-    }
-    test=head;
-    while(test!=NULL)
-    {
-        printf("(%d,%d)\n",test->juncNode->squareX,test->juncNode->squareY);
-        test=test->next;
     }
     return head;
 }
@@ -655,61 +622,7 @@ struct route* addRoute(struct node* nodeHead,struct node* nodeTail)
 
     return firstRoute;
 }
-struct route* correctOrder(struct route* aRoute)
-{
-    if(aRoute==NULL)
-    return NULL;
 
-    int startX=20,startY=20,endX=140,endY=180;
-    int headX=aRoute->pathHead->squareX;
-    int headY=aRoute->pathHead->squareY;
-    int tailX=aRoute->pathTail->squareX;
-    int tailY=aRoute->pathTail->squareY;
-    if(headX==endX&&headY==endY&&tailX==startX&&tailY==startY)
-    {
-        struct node *aNode=aRoute->pathHead;
-        struct node *temp=NULL,*next=NULL;
-        while(aNode!=NULL)
-        {
-            next=aNode->next;
-
-            temp=aNode->previous;
-            aNode->previous=aNode->next;
-            aNode->next=temp;
-
-            aNode=next;
-        }
-        temp=aRoute->pathHead;
-        aRoute->pathHead=aRoute->pathTail;
-        aRoute->pathTail=temp;
-        
-        temp=next=NULL;
-    }
-    return aRoute;
-}
-struct node* correctDirection(struct node* nodeHead,struct node* start,struct node* end)
-{
-    /*after meeting a visited junction, correct the direction from
-    this visited junction to the tempLastJunction,then store into route list.
-    */
-    if(nodeHead==NULL)
-    return NULL;
-
-    struct node* p=start;
-    while(p!=end->previous)
-    {
-        p->direction-=2;
-
-        if(p->direction==-1)
-        p->direction=3;
-        else if(p->direction==-2)
-        p->direction=2;
-
-        printf("changing direction to:(%d,%d,%d)",p->direction,p->squareX,p->squareY);
-        p=p->previous;
-    }
-    return nodeHead;
-}
 struct route* routeContainThisNode(struct node* aNode)
 {
     struct route* aRoute=firstRoute;
@@ -759,6 +672,7 @@ struct route* getShortestRoute(struct route* firstRoute)
     struct node *aNode=NULL;
     int step=0;
     int minStep=0;
+    int routeCounter=1;
     struct route *shortestRoute=aRoute;
     while(aRoute!=NULL)
     {
@@ -770,6 +684,11 @@ struct route* getShortestRoute(struct route* firstRoute)
 
             aNode=aNode->next;
         }        
+        step++;
+        if(aRoute==firstRoute)
+        minStep=step;
+
+        printf("route %d requires %d steps\n",routeCounter,step);
         if(step<minStep)
         {
             minStep=step;
@@ -777,14 +696,18 @@ struct route* getShortestRoute(struct route* firstRoute)
         }
         step=0;
         aRoute=aRoute->next;
+        routeCounter++;
     }
+    printf("minStep:%d\n",minStep);
     return shortestRoute;
 }
 void showAllRoutes()
 {
     struct route *aRoute=firstRoute;
+    int routeCounter=1;
     while(aRoute!=NULL)
     {
+        printf("route %d goes through following nodes:\n",routeCounter);
         struct node *aNode=aRoute->pathHead;
         while(aNode!=aRoute->pathTail->next)
         {
@@ -794,288 +717,7 @@ void showAllRoutes()
         }
         printf("\n\n");
         aRoute=aRoute->next;
+        routeCounter++;
     }
 
-}
-
-/**********************************************************************/
-                      /*main function*/
-/**********************************************************************/
-
-void phase1()
-{
-    /*set primitive variables*/
-    int reachPoint3=0;  //how many times the robot has reached point3
-    int A=0,B=0,C=0; //check points
-    int left=0,front=0,right=0;
-    int squaresNumber=0;
-
-    /*set linked-lists*/
-    struct node *nodeHead=createNodeList(0,20,20);
-    struct node *current_node=NULL;
-    /*graph traversal*/
-    while(A==0||B==0||reachPoint3==0||juncHead!=NULL||squaresNumber<17)
-    {
-        printf("A=%d,B=%d,C=%d\n",A,B,C);
-        //move forward by a square
-        drive_goto(W_tick,W_tick);
-
-        //get environment information of current square 
-        left=leftJunc();
-        front=frontJunc();
-        right=rightJunc();  //left/front/right only has two values:0 or 1
-        printf("left=%d,front=%d,right=%d\n",left,front,right);
-        
-        //create a node and add it to the list
-        current_node=(struct node*)malloc(sizeof(struct node));
-        if(current_node==NULL)
-        printf("Failed to allocate memory to a new node.\n");
-        current_node->previous=nodeTail;
-        current_node->direction=current_node->previous->direction;  //temporary
-        current_node->squareX=getPositionX(current_node->previous);
-        current_node->squareY=getPositionY(current_node->previous);
-        nodeHead=addNode(current_node,nodeHead);
-        squaresNumber++;
-
-        printf("head:%d,%d,%d\n",nodeHead->direction,nodeHead->squareX,nodeHead->squareY);
-        printf("previous:%d,%d,%d\n",current_node->previous->direction,current_node->previous->squareX,current_node->previous->squareY);
-        printf("current:%d,%d,%d\n",current_node->direction,current_node->squareX,current_node->squareY);
-        printf("tail:%d,%d,%d\n",nodeTail->direction,nodeTail->squareX,nodeTail->squareY);        
-
-        //square recognize
-        A+=isAtPoint1(current_node);
-        B+=isAtPoint2(current_node);
-        C=isAtPoint3(current_node);
-        printf("6.A=%d,B=%d,C=%d\n",A,B,C);
-        
-        if(left+front+right-1>0)  //a junction
-        {
-            if(isInvisitedJunction(current_node))
-            {
-                struct junction *aJunction=(struct junction*)malloc
-                                                    (sizeof(struct junction));
-                aJunction->juncNode=current_node;
-                aJunction->right=right;
-                aJunction->front=front;
-                aJunction->left=left;
-                pushAJunction(aJunction);
-
-                current_node=chooseADirection(aJunction,current_node);
-                printf("\nThis is an invisited junction.\n");
-                printf("-----------------------\n\n");
-                continue;
-            }
-            else if(reachPoint3>0)//a visited junction and have reached point3
-            {   
-                printf("\nThis is a visited junction.\n");
-                struct junction *visitedJunc=getThisJunction(current_node);
-                printf("get visited junc(%d,%d,%d)\n",
-                                    visitedJunc->juncNode->direction,
-                visitedJunc->juncNode->squareX,visitedJunc->juncNode->squareY);
-
-                struct route *routeContainTheJunction=
-                                routeContainThisNode(visitedJunc->juncNode);
-                printf("\nThe route contain it:start(%d,%d),end(%d,%d)\n",
-                            routeContainTheJunction->pathHead->squareX,
-                            routeContainTheJunction->pathHead->squareY,
-                            routeContainTheJunction->pathTail->squareX,
-                            routeContainTheJunction->pathTail->squareY);
-
-                if(routeContainTheJunction==NULL)
-                {
-                    printf("\nERROR:No route contain this junction.\n");
-                    break;
-                }
-                visitedJunc=updateThisJunction(visitedJunc,current_node->previous);
-                printf("update visited junc info\n");
-
-                backward(nodeHead,current_node,NULL);
-                printf("backwards\n");
-                
-
-                nodeHead=copyNodesToThisRoute(nodeHead,routeContainTheJunction,
-                            visitedJunc->juncNode->previous,
-                            routeContainTheJunction->pathHead);
-                printf("copy the rest path\n");          
-                
-                
-                //checkDirectionWhenFinishingPoint();
-                juncHead=updateJunctionList(juncHead);
-                printf("finish update whole junction list");
-                C=1;
-                current_node=nodeHead;
-                
-            }
-            else  //meet a visited junction but didn't reach point 3
-            {
-                printf("\nSorry.Can't handle this situation(meet a visited junction but didn't reach point 3)\n");
-                backward(nodeHead,current_node,nodeHead);
-                current_node=nodeHead;
-                break;
-            }
-        }                
-        if(C==1)
-        {
-            printf("\nThis is the finishing point.\n");
-            printf("-----------------------\n\n");
-            printf("-------------------------------------------------------\n");
-            reachPoint3++;
-            printf("reach point=%d\n",reachPoint3);
-
-            backward(nodeHead,current_node,nodeHead);
-
-            if(reachPoint3==1)
-            firstRoute=createRouteList(nodeHead,nodeTail);
-            else
-            firstRoute=addRoute(nodeHead,nodeTail);
-
-            printf("One route complete: start(%d,%d),end(%d,%d)\n",
-                    lastRoute->pathHead->squareX,lastRoute->pathHead->squareY,
-                    lastRoute->pathTail->squareX,lastRoute->pathTail->squareY);
-
-            nodeHead=nodeTail=NULL;  
-
-            struct junction *firstJunction=popJunctionTail();
-            
-            if(firstJunction!=NULL)
-            {
-                printf("first junction is at (%d,%d)\n",
-                                    firstJunction->juncNode->squareX,
-                                    firstJunction->juncNode->squareY);
-
-                struct route *routeContainTheJunction=
-                                routeContainThisNode(firstJunction->juncNode);
-                if (routeContainThisNode==NULL)
-                {
-                    printf("ERROR when search a route containing the nearest junction!");
-                    break;
-                }
-                printf("The route contain the nearest junction: start(%d,%d),end(%d,%d)\n",
-                                    routeContainTheJunction->pathHead->squareX,
-                                    routeContainTheJunction->pathHead->squareY,
-                                    routeContainTheJunction->pathTail->squareX,
-                                    routeContainTheJunction->pathTail->squareY);
-
-                int direction=routeContainTheJunction->pathHead->direction;
-                int x=routeContainTheJunction->pathHead->squareX;
-                int y=routeContainTheJunction->pathHead->squareY;
-                nodeHead=createNodeList(direction,x,y);
-                current_node=nodeHead;
-                nodeTail=nodeHead;
-
-                printf("route contain this junction___\n");
-                struct node *testNode=routeContainTheJunction->pathHead;
-                while(testNode!=NULL)
-                {
-                    printf("(%d,%d,%d)-->\n",testNode->direction,
-                                testNode->squareX,testNode->squareY);
-                    testNode=testNode->next;
-                }
-
-                printf("A new route started: start at(%d,%d)\n",
-                                        nodeHead->squareX,nodeHead->squareY);
-
-                struct node *copyStartNode=routeContainTheJunction->pathHead->next;
-                struct node *copyEndNode=firstJunction->juncNode; 
-                
-                nodeHead=copyNodesToThisRoute(nodeHead,routeContainTheJunction,
-                                            copyStartNode,copyEndNode);
-
-                if(current_node!=nodeHead)
-                {
-                    printf("some error happens\n");
-                    printf("current_node(%d,%d,%d)\n",current_node->direction,
-                                        current_node->squareX,current_node->squareY);
-                    printf("nodeHead(%d,%d,%d)\n",nodeHead->direction,nodeHead->squareX
-                                        ,nodeHead->squareY);
-                    printf("current_node->next(%d,%d,%d)\n",current_node->next->direction,
-                                        current_node->next->squareX,current_node->next->squareY);
-                    exit(1);
-                }                
-                forWard(nodeHead,current_node,nodeTail);  
-                printf("forward complete\n");
-                printf("nodeHead(%d,%d,%d)\n",nodeHead->direction,
-                                nodeHead->squareX,nodeHead->squareY);
-                printf("nodeTail(%d,%d,%d)\n",nodeTail->direction,
-                                nodeTail->squareX,nodeTail->squareY);
-                current_node=nodeTail;
-                current_node->direction=firstJunction->juncNode->previous->direction;
-                current_node=chooseADirection(firstJunction,current_node);
-                updateThisJunction(firstJunction,NULL);
-                juncHead=updateJunctionList(juncHead);
-            }
-            printf("-------------------------------------------------------\n");
-            continue;
-        }
-
-        if(left==front==right==0)           //a dead end
-        {
-            printf("\nThis is a dead end.\n");
-            struct junction* nearestJunction=popAJunction();
-            if(nearestJunction==NULL)
-            {
-                backward(nodeHead,current_node,nodeHead);
-                break;
-            }
-            backward(nodeHead,current_node,nearestJunction->juncNode);
-            nodeHead=removeNode(current_node,nearestJunction->juncNode,nodeHead);
-            current_node=nodeTail;
-            current_node->direction=current_node->previous->direction;
-            nearestJunction=updateThisJunction(nearestJunction,NULL);
-            current_node=chooseADirection(nearestJunction,current_node);
-        }
-        else if((left+front+right)%3==1)   //not a junction
-        {
-            printf("\nThis is not a junction.\n");
-            if(left)
-            {
-                toLeftDirection();  //robot's behavior
-                turnLeft(current_node);  //data handle
-            }
-            if(right)
-            {
-                toRightDirection();
-                turnRight(current_node);
-            }
-        }
-        else
-        printf("\nERROR: Unknown condition\n");
-        printf("-----------------------\n\n");
-    }
-    printf("-----------------------------\n");
-    printf("  Graph Traversal Completed  \n");
-    printf("-----------------------------\n");
-    printf("Returning to the start point.\n");
-    printf("hellllo\n");
-    //backward(lastRoute->pathHead,current_node,lastRoute->pathHead);
-    printf("2222222\n");
-    printf("3333333\n");
-    printf("\n------------------phase1 finish---------------------\n");
-}
-void phase2()
-{
-    printf("\n------------------Calculating---------------------\n");
-    showAllRoutes();
-    struct route* shortestRoute=getShortestRoute(firstRoute);
-    printf("\n------------------phase2 start---------------------\n");
-    drive_setRampStep(64);
-    drive_speed(32,32);
-    forWard(shortestRoute->pathHead,shortestRoute->pathHead,shortestRoute->pathTail);   
-    printf("Reached finishing point.");
-}
-
-int main()
-{
-    drive_speed(128,128);
-    simulator_startNewSmokeTrail();
-    printf("\n--------------------Preparing----------------------\n");
-    drive_goto(0.25*W_tick,0.25*W_tick);  //to get to the center of the start point 
-    printf("          Reached center of the start square.          ");
-    printf("\n------------------phase1 start---------------------\n");
-    phase1();
-    pause(500);
-    phase2();
-    printf("\n------------------phase2 finish---------------------\n");
-    simulator_stopSmokeTrail();
-    return 0;
 }

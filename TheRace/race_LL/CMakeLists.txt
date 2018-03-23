@@ -1,0 +1,1 @@
+DECLARE_APP(main main.c)

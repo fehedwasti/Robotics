@@ -1,0 +1,1 @@
+/usr/bin/c++      CMakeFiles/main.dir/main.c.o  -o main -rdynamic ../../src/libclient.a -lpthread 

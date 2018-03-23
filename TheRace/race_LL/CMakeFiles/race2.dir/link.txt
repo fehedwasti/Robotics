@@ -1,0 +1,1 @@
+/usr/bin/c++      CMakeFiles/race2.dir/race2.c.o  -o race2 -rdynamic ../../src/libclient.a -lpthread 
