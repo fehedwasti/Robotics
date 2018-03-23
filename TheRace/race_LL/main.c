@@ -4,12 +4,12 @@ int main()
 {
     printf("\n----------------------------------------------------\n");
     printf("Something need to know:\n");
-    printf("*This solution would let the robot go back to the starting \n point whenever it meets the finishing point or a visited junction.\n");
-    printf(" So sorry it might take a bit long time to finish the phase 1.\n\n");
-    printf("*Once a step is finished information will be printed out to let you know.\n");
+    printf("*In phase 1,in some cases this solution would let the robot go back to the starting point.\n\n");
+    printf("*That is normal.But the problem is it might take a bit long time to finish the phase 1,usually around 12 min(Very sorry about that).\n\n");
+    printf("*Please wait patiently.\n\n");
+    printf("*Once a stage is finished information will be printed out to let you know.\n");
     printf("\n----------------------------------------------------\n");
 
-    //drive_setRampStep(64);
     drive_speed(128,128);
     simulator_startNewSmokeTrail();
     printf("\n--------------------Preparing-----------------------\n");

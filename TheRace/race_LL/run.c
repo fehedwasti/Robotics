@@ -86,12 +86,10 @@ void phase1()
                 current_node=nodeHead;
                 break;
             }
-        }                
+        }        
         if(C==1)
         {
             reachPoint3++;
-            backward(nodeHead,current_node,nodeHead);
-            current_node=nodeHead;
             if(reachPoint3==1)
             {
                 printf("\nThat is the finishing point.\n");
@@ -102,18 +100,22 @@ void phase1()
             firstRoute=addRoute(nodeHead,nodeTail);
             printf("-------Current route list: %d routes stored---------------\n",reachPoint3);
             
-            nodeHead=nodeTail=NULL;  
 
             struct junction *firstJunction=popJunctionTail();
             
             if(firstJunction!=NULL)
             {
+                int mark=0;
                 struct route *routeContainTheJunction=
                                 routeContainThisNode(firstJunction->juncNode);
-                if (routeContainThisNode==NULL)
+                if (routeContainTheJunction==lastRoute)
                 {
-                    printf("ERROR when search a route containing the nearest junction!");
-                    break;
+                    backward(nodeHead,current_node,firstJunction->juncNode); 
+                }
+                else
+                {
+                    backward(nodeHead,current_node,nodeHead);
+                    mark++;
                 }
 
                 int direction=routeContainTheJunction->pathHead->direction;
@@ -121,7 +123,7 @@ void phase1()
                 int y=routeContainTheJunction->pathHead->squareY;
                 nodeHead=createNodeList(direction,x,y);
                 current_node=nodeHead;
-                nodeTail=nodeHead;
+                nodeTail=nodeHead;                
 
                 printf("\n----------A new route start---------------\n");
 
@@ -141,7 +143,8 @@ void phase1()
                     printf("current_node->next(%d,%d,%d)\n",current_node->next->direction,
                                         current_node->next->squareX,current_node->next->squareY);
                     exit(1);
-                }                
+                }             
+                if(mark==1)   
                 forWard(nodeHead,current_node,nodeTail);  
                 current_node=nodeTail;
                 current_node->direction=firstJunction->juncNode->previous->direction;
@@ -151,19 +154,31 @@ void phase1()
             }
             continue;
         }
-
-        if(left==front==right==0)           //a dead end
+        if(left==front==right==0&&C==0)           //a dead end
         {
             printf("\nThis is a dead end.\n");
-            struct junction* nearestJunction=popAJunction();
+            struct junction* nearestJunction=popAJunction();            
             if(nearestJunction==NULL)
             {
                 printf("-----------------------\n\n");
                 backward(nodeHead,current_node,nodeHead);
+                current_node=nodeHead;
                 break;
             }
-            backward(nodeHead,current_node,nearestJunction->juncNode);
-            nodeHead=removeNode(current_node,nearestJunction->juncNode,nodeHead);
+            struct route *theRoute=routeContainThisNode(nearestJunction->juncNode);
+            if(theRoute==NULL)
+            {
+                backward(nodeHead,current_node,nearestJunction->juncNode);
+                nodeHead=removeNode(current_node,nearestJunction->juncNode,nodeHead);                
+            }
+            else
+            {
+                backward(nodeHead,current_node,NULL);
+                nodeHead=removeNode(current_node,nodeHead,nodeHead);
+                forWard(theRoute->pathHead,theRoute->pathHead,nearestJunction->juncNode);
+                nodeHead=copyNodesToThisRoute(nodeHead,theRoute,theRoute->pathHead->next,nearestJunction->juncNode);
+            }
+            theRoute=NULL;
             current_node=nodeTail;
             current_node->direction=current_node->previous->direction;
             nearestJunction=updateThisJunction(nearestJunction,NULL);
@@ -185,8 +200,10 @@ void phase1()
         }
         else
         printf("\nERROR: Unknown condition\n");
+
         printf("-----------------------\n\n");
     }
+    backward(nodeHead,current_node,nodeHead);
     printf("\n------------------------------------------------------\n");
     printf("\n              Graph Traversal Completed               \n");
     //printf("\n------------------PHASE 1 FINISH----------------------\n");
