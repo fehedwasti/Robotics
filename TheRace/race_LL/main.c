@@ -9,7 +9,7 @@ int main()
     printf("*Once a step is finished information will be printed out to let you know.\n");
     printf("\n----------------------------------------------------\n");
 
-    drive_setRampStep(64);
+    //drive_setRampStep(64);
     drive_speed(128,128);
     simulator_startNewSmokeTrail();
     printf("\n--------------------Preparing-----------------------\n");
